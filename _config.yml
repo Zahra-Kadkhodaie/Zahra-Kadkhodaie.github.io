@@ -22,7 +22,7 @@ repository               : "Zahra-Kadkhodaie/Zahra-Kadkhodaie.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "https://cds.nyu.edu/wp-content/uploads/2024/08/Zahra-Kadkhodaie-300x293.jpeg"
+  avatar           : "images/profile.png"
   name             : "Zahra Kadkhodaie"
   pronouns         : # example: "she/her"
   bio              : "Short biography for the left-hand sidebar"
