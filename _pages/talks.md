@@ -7,11 +7,11 @@ author_profile: true
 
 
 **Elucidating image Representation in a UNet diffusion model denoiser**
-- June 2025 - our lab meeting
+<!-- June 2025 - our lab meeting-->
 - June 2025 - CCM reading group
 - CSAIL - May 2025
 
-**image prios**
+**image priors**
 - My defense public talk
 - NYU CDS graduate seminar
 
@@ -31,11 +31,12 @@ author_profile: true
 **Efficient diffusion model via multi-scale local conditional probabilities**
 - ICLR, Kigali, Rwanda -- May 2023 (Oral) <a href="https://iclr.cc/virtual/2023/poster/10971" target="_blank">Learning multi-scale local conditional probability models of images</a>
 
-**Solving linear inverse problems using image priors embedded in a diffusion model denoiser**
-- Flatiron-Wide Machine Learning Meeting, New York, Jun 2023 <a href="https://www.youtube.com/watch?v=24IukBNPJLw" target="_blank">Using the prior implicit in a denoiser to solve linear inverse problems stochastically</a>
+**Stochastic Solutions for Linear Inverse Problems using image priors embedded in a diffusion model denoiser**
+- Flatiron-Wide Machine Learning Meeting, New York, Jun 2023 <a href="https://www.youtube.com/watch?v=24IukBNPJLw" target="_blank">Video</a>
 <!--Lightening talk on universal inverse for incoming grad students - 2021-->
 - Workshop on Mathematical Models for Plug-and-play Image Restoration, Paris, France -- Dec 2022
-- NeurIPS 2021, Virtual <a href="https://slideslive.com/38969052/stochastic-solutions-for-linear-inverse-problems-using-the-prior-implicit-in-a-denoiser?ref=speaker-23489" target="_blank">Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser</a>
+- NeurIPS 2021, Virtual <a href="https://slideslive.com/38969052/stochastic-solutions-for-linear-inverse-problems-using-the-prior-implicit-in-a-denoiser?ref=speaker-23489" target="_blank">Video</a>
 
-**Bias-free deep neural network denoisers act like adaptive linear projections onto the local tangent plane of the image manifold**
-- ICLR, Virtual -- Apr 2020 (co-presented with Sreyas Mohan) <a href="https://iclr.cc/virtual_2020/poster_HJlSmC4FPS.html" target="_blank">Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks</a>
+<!--**Bias-free deep neural network denoisers act like adaptive linear projections onto the local tangent plane of the image manifold**-->
+**Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks**
+- ICLR, Virtual -- Apr 2020 (co-presented with Sreyas Mohan) <a href="https://iclr.cc/virtual_2020/poster_HJlSmC4FPS.html" target="_blank">Video</a>
