@@ -32,11 +32,11 @@ author_profile: true
 - ICLR, Kigali, Rwanda -- May 2023 (Oral) <a href="https://iclr.cc/virtual/2023/poster/10971" target="_blank">Learning multi-scale local conditional probability models of images</a>
 
 **Stochastic Solutions for Linear Inverse Problems using image priors embedded in a diffusion model denoiser**
-- Flatiron-Wide Machine Learning Meeting, New York, Jun 2023 <a href="https://www.youtube.com/watch?v=24IukBNPJLw" target="_blank">Video</a>
+- Flatiron-Wide Machine Learning Meeting, New York -- Jun 2023 <a href="https://www.youtube.com/watch?v=24IukBNPJLw" target="_blank">Video</a>
 <!--Lightening talk on universal inverse for incoming grad students - 2021-->
 - Workshop on Mathematical Models for Plug-and-play Image Restoration, Paris, France -- Dec 2022
-- NeurIPS 2021, Virtual <a href="https://slideslive.com/38969052/stochastic-solutions-for-linear-inverse-problems-using-the-prior-implicit-in-a-denoiser?ref=speaker-23489" target="_blank">Video</a>
+- NeurIPS, Virtual -- Dec 2021 <a href="https://slideslive.com/38969052/stochastic-solutions-for-linear-inverse-problems-using-the-prior-implicit-in-a-denoiser?ref=speaker-23489" target="_blank">Video</a>
 
 <!--**Bias-free deep neural network denoisers act like adaptive linear projections onto the local tangent plane of the image manifold**-->
 **Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks**
-- ICLR, Virtual -- Apr 2020 (co-presented with Sreyas Mohan) <a href="https://iclr.cc/virtual_2020/poster_HJlSmC4FPS.html" target="_blank">Video</a>
+- ICLR, Virtual (co-presented with Sreyas Mohan) -- Apr 2020 <a href="https://iclr.cc/virtual_2020/poster_HJlSmC4FPS.html" target="_blank">Video</a>
