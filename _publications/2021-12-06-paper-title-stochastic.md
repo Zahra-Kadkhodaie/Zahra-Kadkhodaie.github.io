@@ -3,7 +3,6 @@ title: "Stochastic Solutions for Linear Inverse Problems using the Prior Implici
 collection: publications
 category: conferences
 permalink: /publication/2021-12-06-paper-title-stochastic
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 date: 2021-12-06
 venue: 'NeurIPS'
 paperurl: 'https://proceedings.neurips.cc/paper/2021/file/6e28943943dbed3c7f82fc05f269947a-Paper.pdf'
