@@ -6,9 +6,9 @@ author_profile: true
 ---
 
 
-**Elucidating image Representation in a UNet diffusion model denoiser**
+**Elucidating the Representation of Images Within an Unconditional Diffusion Model Denoiser**
 <!-- June 2025 - our lab meeting-->
-- Center for Computational Mathematics reading group, Flatiron Institute, New York -- Jun 2025
+- Center for Computational Mathematics Reading Group, Flatiron Institute, New York -- Jun 2025
 - CSAIL, MIT -- May 2025
 
 <!--**image priors**
@@ -40,3 +40,6 @@ author_profile: true
 <!--**Bias-free deep neural network denoisers act like adaptive linear projections onto the local tangent plane of the image manifold**-->
 **Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks**
 - ICLR, Virtual (co-presented with Sreyas Mohan) -- Apr 2020 <a href="https://iclr.cc/virtual_2020/poster_HJlSmC4FPS.html" target="_blank">(Video)</a>
+
+## Panel Discussions
+- Topic: Scale vs. Geometric Modeling, <a href="https://gram-workshop.github.io/" target="_blank">GRaM Workshop</a> at ICML -- Jul 2024 <a href="https://slideslive.com/39022251/gram-panel-discussion?ref=speaker-23489" target="_blank">(Video)</a>
