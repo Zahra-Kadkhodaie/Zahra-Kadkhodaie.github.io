@@ -41,5 +41,5 @@ author_profile: true
 **Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks**
 - ICLR, Virtual (co-presented with Sreyas Mohan) -- Apr 2020 <a href="https://iclr.cc/virtual_2020/poster_HJlSmC4FPS.html" target="_blank">(Video)</a>
 
-## Panel Discussions
-- Topic: Scale vs. Geometric Modeling, <a href="https://gram-workshop.github.io/" target="_blank">GRaM Workshop</a> at ICML -- Jul 2024 <a href="https://slideslive.com/39022251/gram-panel-discussion?ref=speaker-23489" target="_blank">(Video)</a>
+# Panel Discussions
+- *Scale vs. Geometric Modeling*, <a href="https://gram-workshop.github.io/" target="_blank">GRaM Workshop</a> at ICML -- Jul 2024 <a href="https://slideslive.com/39022251/gram-panel-discussion?ref=speaker-23489" target="_blank">(Video)</a>
