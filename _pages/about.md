@@ -7,4 +7,5 @@ redirect_from:
   - /about.html
 ---
  
-I’m a Research Fellow at the [Flatiron Institute][https://www.simonsfoundation.org/flatiron/], Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the Center for Data Science at New York University, advised by [Eero Simoncelli][https://www.cns.nyu.edu/~eero/]. 
+I’m a Research Fellow at the [Flatiron Institute](https://www.simonsfoundation.org/flatiron/), Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the Center for Data Science at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). I did my undergraduate degree in Solid State Physics and I hold a Master's degree in Psychology. 
+
