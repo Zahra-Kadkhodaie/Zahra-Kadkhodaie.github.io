@@ -7,4 +7,4 @@ redirect_from:
   - /about.html
 ---
  
-I’m a research fellow working jointly at the Center for Computational Neuroscience (CCN) and the Center for Computational Mathematics (CCM). I completed my Ph.D. at the Center for Data Science (CDS) at New York University (NYU). I hold a bachelor’s degree in Solid-State Physics and a master’s degree in Psychology.
+I’m a Research Fellow at the [Flatiron Institute][https://www.simonsfoundation.org/flatiron/], Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the Center for Data Science at New York University, advised by [Eero Simoncelli][https://www.cns.nyu.edu/~eero/]. 
