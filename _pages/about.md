@@ -9,9 +9,28 @@ redirect_from:
  
 I’m a Research Fellow at the [Flatiron Institute](https://www.simonsfoundation.org/flatiron/), Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the [Center for Data Science](https://cds.nyu.edu/) at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
 
-I'm interested in vision and more specifically in **Probability Densities of Natural Images**. 
-I have studied different aspects of these densities: *learning* them from data, *understanding and evaluating* the learned models, and *utilizing* them for real-world problems. These areas are quite intertwined and the boundaries between them are fuzzy: understanding a learned model can inspire the design of better and more efficient ones. Conversely, when engineeing creativity leads to improved performance, it often hints at something meaningful the model has captured about the "true" natural image density. 
+I'm broadly interested in vision and more specifically in **Probability Densities of Natural Images**. 
+I have studied different aspects of these densities: *learning* them from data, *understanding and evaluating* the learned models, and *utilizing* them for real-world problems. These areas are quite intertwined: understanding a learned model can inspire the design of better and more efficient ones. Conversely, practical advances can reveal new insights into the structure of natural images.
+So I enjoy studying image densities from these complementary angles and seeing how they inform one another.
 
+<!-- when engineeing creativity leads to improved performance, it often hints at something meaningful the model has captured about the "true" natural image density.  -->
+
+<!-- I’m broadly interested in vision, and in particular in probability densities of natural images.
+My work explores different aspects of these densities — learning them from data, analyzing and evaluating the resulting models, and applying them to real-world problems. These directions are closely connected: gaining insight into a learned model can suggest ways to design better ones, while practical improvements often reveal something about what the model has captured from the underlying data. I enjoy studying these ideas from multiple perspectives and seeing how they inform one another.
+ -->
+
+
+<!-- Formal / concise version
+
+I am interested in computer vision, particularly in the probability densities of natural images.
+My research focuses on learning these densities from data, analyzing and evaluating learned models, and applying them to practical problems. These areas are closely connected: understanding a model can inspire better designs, while engineering improvements can reveal insights about the underlying data distribution. Studying image densities from these complementary angles helps build both better models and a deeper understanding of visual data.
+
+Personal / narrative version
+
+I’m interested in vision, and especially in probability densities of natural images—how they can be learned, understood, and used.
+I’ve explored these ideas from several directions: learning models from data, analyzing and evaluating what they capture, and applying them to real-world problems. These areas often inform one another: understanding a model can suggest ways to improve it, and practical advances can reveal new insights into the structure of natural images. I enjoy approaching these questions from multiple angles and learning from the connections between them.
+ -->
+<!-- and the boundaries between them are fuzzy -->
 <!-- yet I find it helpful to draw fuzzy boundaries between them to better navigate this rich landscape.  -->
 
 I approach these questions using the **scientific method**. 
