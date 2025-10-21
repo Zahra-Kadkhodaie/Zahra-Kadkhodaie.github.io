@@ -7,9 +7,8 @@ author_profile: true   # optional – adds your profile photo sidebar
 
 Complete list of papers at [Google Scholar](https://scholar.google.com/citations?hl=en&user=_b5JdjYAAAAJ&view_op=list_works). 
 
-Here is my [PhD thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf). 
 
-### Selected Publications (Chrolonogical)
+### Selected Publications 
 - Z. Kadkhodaie, S. Mallat, E. P. Simoncelli, **Unconditional CNN denoiser contain sparse semantic representations of images**. arXiv, 2025.<br>
  [PDF](https://arxiv.org/pdf/2506.01912)
 
@@ -22,7 +21,7 @@ Here is my [PhD thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf).
 - Z. Kadkhodaie, S. Mallat, E. P. Simoncelli, **Feature-guided score diffusion for sampling conditional densities**. arXiv, 2024. <br>
   [PDF](https://arxiv.org/pdf/2410.11646?)
 
-- Z. Kadkhodaie, **Natural Image Densities: Learning, Understanding and Utilizing** PhD thesis, New York University, July 2024.
+- Z. Kadkhodaie, **Natural Image Densities: Learning, Understanding and Utilizing**. PhD thesis, New York University, July 2024.
 
 - Z. Kadkhodaie, F. Guth, E. P. Simoncelli, S. Mallat **Generalization in diffusion models arises from geometry-adaptive harmonic representations**. ICLR, 2024. <br>
  [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
