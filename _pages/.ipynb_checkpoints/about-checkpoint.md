@@ -10,8 +10,9 @@ redirect_from:
 I’m a Research Fellow at the [Flatiron Institute](https://www.simonsfoundation.org/flatiron/), Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the [Center for Data Science](https://cds.nyu.edu/) at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
 
 I'm broadly interested in vision and more specifically in **Probability Densities of Natural Images**. 
-I have studied different aspects of these densities: *learning* them from data, *understanding and evaluating* the learned models, and *utilizing* them for real-world problems. These areas are quite intertwined: understanding a learned model can inspire the design of better and more efficient ones. Conversely, practical advances can reveal new insights into the structure of natural images.
-So I enjoy studying image densities from these complementary angles and seeing how they inform one another.
+I have studied these densities from various angles: ***learning*** them from data, ***understanding and evaluating*** the learned models, and ***utilizing*** them for real-world problems. These areas are closely intertwined: understanding a learned model can inspire the design of better and more efficient ones. Conversely, practical advances can hint at something meaningful the model has captured about the underlying data structures.
+<!-- reveal new insights into the structure of natural images. -->
+I enjoy studying these complementary perspectives and seeing how they inform one another through the **scientific method**.
 
 <!-- when engineeing creativity leads to improved performance, it often hints at something meaningful the model has captured about the "true" natural image density.  -->
 
@@ -33,21 +34,23 @@ I’ve explored these ideas from several directions: learning models from data, 
 <!-- and the boundaries between them are fuzzy -->
 <!-- yet I find it helpful to draw fuzzy boundaries between them to better navigate this rich landscape.  -->
 
-I approach these questions using the **scientific method**. 
 
 
 ## Learning image densities from data: 
-
-- curse of dimensionality
+diffusion models
 - Miyasawa: denoisers embed densities 
 - sampling method to show what the learned density is
 
 papers: 
 Solving inverse problem (updated version neurips)
+
 learning normalized density mdoels 
 
 ## Understanding and Evaluating learned density models: 
 what is a good model? 
+
+curse of dimensionality
+
 shallow understanding of deep models.
 why do we care about understanding? predict when generalization and when fails
 scientifc method shines: deep nets have evolves through a natural selection, we can examine them by hypothesizing about what they are and how they work, design controlled experiments to test them. 
@@ -59,7 +62,7 @@ Learning multiscale
 representation 
 
 
-## Utilizing image density mdoels to solve inverse problems: 
+## Utilizing image density models to solve inverse problems: 
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
 ### Linear 
 Solving inverse problem (updated version neurips)
@@ -72,5 +75,5 @@ cone excitation
 
 
 
-My PhD thesis link 
+<!-- My PhD thesis link  -->
 
