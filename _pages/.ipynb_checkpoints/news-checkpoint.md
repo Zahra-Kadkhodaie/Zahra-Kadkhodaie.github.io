@@ -1,9 +1,10 @@
 ---
 layout: single
 title: "News"
-permalink: /News/
-author_profile: true
+permalink: /news/
+author_profile: true   # optional
 ---
+# News
 
 - Sci4Dl workshop NeurIPS
 - Organzing bi-weekly meetinsg at CCN
