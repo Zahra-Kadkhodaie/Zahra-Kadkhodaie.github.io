@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: single
 title: "Publications"
 permalink: /publications/
@@ -39,9 +39,9 @@ Complete list of papers at [Google Scholar](https://scholar.google.com/citations
   [PDF](https://openreview.net/pdf?id=HJlSmC4FPS) | [Project page](https://github.com/LabForComputationalVision/bias_free_denoising)<br>
 <sub>\* denotes equal contribution</sub>
 
+ -->
 
-
-<!-- ---
+---
 layout: archive
 title: "Publications"
 permalink: /publications/
@@ -72,5 +72,5 @@ You can also find my papers on my [Google Scholar profile]({{ site.author.google
   {% for post in site.publications reversed %}
     {% include archive-single.html %}
   {% endfor %}
-{% endif %} -->
+{% endif %}
 
