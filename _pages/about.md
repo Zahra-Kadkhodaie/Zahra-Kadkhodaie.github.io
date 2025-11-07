@@ -25,18 +25,15 @@ Before deep learning, one of the major approches to solve Gaussian denoising pro
 
 $$ \hat{x}(y) = y + \sigma^2 \nabla_y \log p (y)$$
 
-See Raphan for proof. A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes the gradient of the log probablity of noisy images, $$y$$ (score). When the DNN denoiser learns to solve the problem at all nosie levels, it could be used in an iterative **coarse-to-fine gradient ascent** algorithm to sample from the density embedded in the denoiser. We introduced this algorithm in the following paper. The core of the algorithm is similar and was concurent to what later became known as **diffusion models** (hence "diffusion" is not appear in the title).  
+See Raphan for proof. A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes the gradient of the log probablity of noisy images, $$y$$ (score). When the DNN denoiser learns to solve the problem at all nosie levels, it could be used in an iterative **coarse-to-fine gradient ascent** algorithm to sample from the density embedded in the denoiser. We introduced this algorithm in the following paper. The core of the algorithm is similar to and was concurent to what later became known as **diffusion models** (hence "diffusion" did not appear in the title).  
 
-An important property of this algorthm is the denoiser is blind to the noise level, i.e. it doesn't take $$\sigma$$ as an input. This allows us to define an **adaptive** noise schedule during sampling, in which step size depends on the noise amplitute estimated by the model. Additionally, injected noise at each iteration can be adjusted so that the sampling trajectory converges to lower or higher probability points in the space (with gauranteed convergence). 
+An important property of this algorthm is that the denoiser is blind to the noise level, i.e. it doesn't take $$\sigma$$ as an input. This allows us to define an **adaptive** noise schedule during sampling, in which step size depends on the noise amplitute estimated by the model. Additionally, injected noise at each iteration can be adjusted so that the sampling trajectory converges to lower or higher probability points in the space (with gauranteed convergence). 
 
 
 Paper: 
-ZK & Simoncelli, **Solving linear inverse problems using the prior implicit in a denoiser**. arXiv, 2020.<br>
-  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)
-
-Also published as:
-ZK & Simoncelli, **Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser**. NeurIPS, 2021. <br>
-  [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)
+ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) <br>
+ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
+[Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)
 
 
 <!-- ------------------------------------------------- -->
