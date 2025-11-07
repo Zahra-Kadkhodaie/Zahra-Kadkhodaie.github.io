@@ -20,30 +20,26 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 # Research 
 ## Learning image density models from data: 
 
-### <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
-Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of suspaces, Markov random fields) and then estimating a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. But this phenomenal performance begs the question: what is the *prior* that the solution impliciltly relies on? Remarkably, in the case of Gaussian denoising, the relationship between the denoising mapping and the prior is exact and eplicit, thanks to a classical statistics result: 
-$$ \hat{x}(y) = y + \sigma^2 \nabla_y \log p (y)$$
+### <span style="color:green"> Learning and sampling from the density implicit in a denoiser </span>
+Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of suspaces, Markov random fields) and then to estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. But this phenomenal performance begs the question: what is the **prior** that the mapping impliciltly relies on? Remarkably, in the case of Gaussian denoising, the relationship between the denoising mapping and the prior is exact and eplicit, thanks to a classical statistics result: 
+
+$$ \hat{x}(y) = y + \sigma^2 \nabla_y \log p (y)$$ [Robin 1956, Miyasawa 1961]
+
+See Raphan for proof. A Deep Neural Network (DNN) denoiser, $\hat{x}_{\theta}(y)$, hence, computes the gradient of the log probablity of noisy images, $y$. When the DNN denoiser is learned to solve the problem at all nosie levels, it could be used in a **coarse-to-fine gradient ascent** algorithm to sample from the density embedded in the denoiser. 
 
 
-in classical lit: design denoiser based on density. assume a density. design a basis in which signal and noise are separable (signal is compact, sparse and noise is dense). shrinkage
-- here: learning! can't a density directly, but can learn  denoiser (a non-linear regression problem). learn the good denoiser and then extract the density it is relying on (embedding).
-- How: tweedie: relationship between grad of log p and the denoising function.
-- all noise levels, coarse to fine sampling - say diffusion - concurrent (aka Score-based reverse diffusion models)
+
+say diffusion - concurrent (aka Score-based reverse diffusion models)
 - blind denosiers (don't need to feed time as an argument)
 - adjustable injected noise: high p vs low p images
 - adaptive time schedule, h*sigma: goes faster 
-- cite papers
 
-- Z Kadkhodaie, E. P. Simoncelli, **Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser**. NeurIPS, 2021. <br>
-  [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)
 
-- Z. Kadkhodaie & E. P. Simoncelli, **Solving linear inverse problems using the prior implicit in a denoiser**. arXiv, 2020.<br>
+ZK & Simoncelli, **Solving linear inverse problems using the prior implicit in a denoiser**. arXiv, 2020.<br>
   [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)
 
-
- Gaussian denoising is arguably the most simple and fundamental problem in image processing. In classical (i.e. pre-deep learning era) probabilistic signal processing, engineering denoisers relied on assuming a density model over the signal (images) and a transformation that takes the image 
-to design a denoiser, one assumes a probability distribution over the signal (images), for example spectral Gaussian, and then finds a represenation in which the signal is 
- 
+ZK & Simoncelli, **Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser**. NeurIPS, 2021. <br>
+  [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)
 
 
 <!-- ------------------------------------------------- -->
