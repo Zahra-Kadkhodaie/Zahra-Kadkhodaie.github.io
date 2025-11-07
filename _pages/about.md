@@ -22,9 +22,6 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 
 ### <span style="color:green"> Learning and sampling from the density implicit in a denoiser </span>
 
-<details>
-      <summary><strong> <span style="color:blue"> (click to see a summary)</span> </strong></summary>
-
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of suspaces, Markov random fields) and then to estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
 
@@ -48,18 +45,15 @@ Paper:
 ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
 Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
 
-</details>
 
 
 <!-- ------------------------------------------------- -->
 
-<details>
-  <summary><strong> <span style="color:blue"> How to learn a model to predict energy directly? (Rather than the score) (click to expand)</span> </strong></summary>
-  
-2) Learning normalized image densities via dual score matching: learn the log p directly.
+### <span style="color:green"> Learning normalized image density (Rather than the score) </span>
+
+Learning normalized image densities via dual score matching: learn the log p directly.
    two tricks: keep the architecture (inductive biases already tested and evolved) and add the second loss (ties together the normalization factor (partition function) across the noise levels/times/ trajectory). Gets us within the state of the art NLL 
  
-</details>
 
 ## Understanding and Evaluating learned density models: 
 scientifc method shines: deep nets have evolves through a natural selection, we can examine them by hypothesizing about what they are and how they work, design controlled experiments to test them. 
