@@ -17,24 +17,17 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- when engineeing creativity leads to improved performance, it often hints at something meaningful the model has captured about the "true" natural image density.  -->
 <!-- reveal new insights into the structure of natural images. -->
 
-<!-- I’m broadly interested in vision, and in particular in probability densities of natural images.
-My work explores different aspects of these densities — learning them from data, analyzing and evaluating the resulting models, and applying them to real-world problems. These directions are closely connected: gaining insight into a learned model can suggest ways to design better ones, while practical improvements often reveal something about what the model has captured from the underlying data. I enjoy studying these ideas from multiple perspectives and seeing how they inform one another.
- -->
-
-
 # Research 
 ## Learning image density models from data: 
 
+### <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
+Before the emergence of deep learning, for decades, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) in image processing was to assume a prior over the space of images (e.g. Gaussian, Union of suspaces, Markov random fields) and then approximate the best solution in a Bayesian framework. So, the performance of the denoiser depended on how well the assumed prior approximated the "true" density of images. Hand-crafting image priors, however, is not trivial. Researchers relied on empirical findings about structures in images: the spectrum, sparsity, locality, which led to a steady but slow improvment in solving inverse problems. Deep learning revolution upended this trend. We gained access to computrational tools to solve complex high dimensional regression problems (such as classifciation, segemntation, super-resolution, denoising) with remarkable performance. 
 
-
-
-<details>
-  <summary><strong> <span style="color:blue"> Deep neural network denoisers have implicit image densities in them (aka Score-based reverse diffusion models).  (click to expand)</span> </strong></summary>
 
 in classical lit: design denoiser based on density. assume a density. design a basis in which signal and noise are separable (signal is compact, sparse and noise is dense). shrinkage
 - here: learning! can't a density directly, but can learn  denoiser (a non-linear regression problem). learn the good denoiser and then extract the density it is relying on (embedding).
 - How: tweedie: relationship between grad of log p and the denoising function.
-- all noise levels, coarse to fine sampling - say diffusion - concurrent 
+- all noise levels, coarse to fine sampling - say diffusion - concurrent (aka Score-based reverse diffusion models)
 - blind denosiers (don't need to feed time as an argument)
 - adjustable injected noise: high p vs low p images
 - adaptive time schedule, h*sigma: goes faster 
@@ -51,7 +44,6 @@ in classical lit: design denoiser based on density. assume a density. design a b
 to design a denoiser, one assumes a probability distribution over the signal (images), for example spectral Gaussian, and then finds a represenation in which the signal is 
  
 
-</details>
 
 <!-- ------------------------------------------------- -->
 
@@ -69,9 +61,6 @@ shallow understanding of deep models.
 curse of dimensionality
 what is a good model? 
 why do we care about understanding? predict when generalization and when fails
-
-
-
 
 
 <details>
@@ -120,14 +109,29 @@ Learning multi-scale local conditional probability models of images: conditional
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
 </details>
    
-   
+5) energy model: energy distribution of images    
    
 ## Utilizing learned density models to solve inverse problems: 
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
 ### Linear inverse problems 
-Solving inverse problem (updated version neurips)
-optimal measurement 
-cone excitation
+<details>
+  <summary><strong> <span style="color:blue"> Solving inverse problem(click to expand)</span> </strong></summary>
+ (updated version neurips)
+</details>
+
+
+<details>
+  <summary><strong> <span style="color:blue"> optimal measurement (click to expand)</span> </strong></summary>
+ (updated version neurips)
+</details>
+
+ 
+<details>
+  <summary><strong> <span style="color:blue"> cone excitation (click to expand)</span> </strong></summary>
+ (updated version neurips)
+</details>
+
+
 ### non-linear inverse problems
 - feature- guided 
 - texture model 
