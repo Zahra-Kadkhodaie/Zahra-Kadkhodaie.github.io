@@ -20,9 +20,9 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 # Research 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-<!-- ------------------------------------------------- -->
-
 ## Learning image density models from data: 
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
 
 ### <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
 
@@ -54,14 +54,26 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 <!-- ------------------------------------------------- -->
 
 ### <span style="color:blue"> Learning normalized image density rather than the score </span>
-Can we make the embeded prior in a denoiser even more explict by predicting the energy ($$- \log p$$) rather than the score ($$ \nabla \log p$$)? There are two main problems to tackle to make this transition: 1) finding the right architecture and second and 2) normalizing the density. Neither of these problems exit for score models: through a massive collective effort the architecures have been imporved and refined to have the right inductive biases. This evolution has not happened for energy models, putting their performacne at a significant disadvange. Additionally, in score models, thanls to the gradient, the normalizing factor (partition function) goes away resolving the problem automatically. In the paper below, we introduced two simple tricks to overcome these issues. 
+Can we make the embeded prior in a denoiser even more explict by predicting the energy ($$- \log p$$) rather than the score ($$ \nabla \log p$$)? There are two main problems to tackle to make this transition: 1) finding the right architecture and second and 2) normalizing the density. Neither of these problems exit for score models: through a massive collective effort the architecures have been imporved and refined to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, thanks to the gradient, the normalizing factor (partition function) goes away resolving the problem automatically. In the paper below, we introduced two simple tricks to overcome these issues. 
 
-First, we 
+First, we showed that we can re-purpose score model architetures for energy models, by setting the energy to be 
+
+$$U_{\theta}(y, t) =  \frac{1}{2} \angle y , s_{\theta}(y,t)$$
+
+for this to be true, the score  model is required to be conservative and homogeneous.
+
+Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation holds across time (noise levels). In effect, it ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infity)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
+
+(Add fig, connected path )
+
+These two changes do not deteriorate denoisnig performance, meaning that the optimum for the dual loss happens at the same place as the single loss. 
 
 
-Learning normalized image densities via dual score matching: learn the log p directly.
+A model trained using these two tricks compute $$-\log p(x)$$  in one forward pass (**1000 times** faster than cumbersome computation using a score model). 
 
-   two tricks: keep the architecture (inductive biases already tested and evolved) and add the second loss (ties together the normalization factor (partition function) across the noise levels/times/ trajectory). Gets us within the state of the art NLL 
+A good energy model assigns low energy to in distribution images. We test this on a model trained on ImageNet and show that $$-\log p(x)$$ are within the state-of-the-art range. 
+
+(add table NLL)
  
 Paper: 
 
@@ -70,9 +82,10 @@ Paper:
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
+## Understanding and Evaluating learned density models: 
+<!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
-## Understanding and Evaluating learned density models: 
 scientifc method shines: deep nets have evolves through a natural selection, we can examine them by hypothesizing about what they are and how they work, design controlled experiments to test them. 
 shallow understanding of deep models.
 curse of dimensionality
@@ -132,9 +145,10 @@ energy model: energy distribution of images
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-<!-- ------------------------------------------------- -->
-   
 ## Utilizing learned density models to solve inverse problems: 
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
+
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
 
 ### Linear inverse problems 
