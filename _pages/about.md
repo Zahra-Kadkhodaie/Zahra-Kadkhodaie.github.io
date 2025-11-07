@@ -22,13 +22,16 @@ My work explores different aspects of these densities — learning them from dat
  -->
 
 
-# Research overview 
+# Research 
 ## Learning image density models from data: 
 
+
+
+### Deep neural network denoisers have implicit image densities in them (aka Score-based reverse diffusion models). 
 <details>
-  <summary><strong> <span style="color:blue"> How to *learn* image density from data ? (click to expand)</span> </strong></summary>
-    
-1) in classical lit: design denoiser based on density. assume a density. design a basis in which signal and noise are separable (signal is compact, sparse and noise is dense). shrinkage
+  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+
+in classical lit: design denoiser based on density. assume a density. design a basis in which signal and noise are separable (signal is compact, sparse and noise is dense). shrinkage
 - here: learning! can't a density directly, but can learn  denoiser (a non-linear regression problem). learn the good denoiser and then extract the density it is relying on (embedding).
 - How: tweedie: relationship between grad of log p and the denoising function.
 - all noise levels, coarse to fine sampling - say diffusion - concurrent 
@@ -50,11 +53,15 @@ to design a denoiser, one assumes a probability distribution over the signal (im
 
 </details>
 
-
-
+<!-- ------------------------------------------------- -->
+### How to learn a model to predict energy directly? (Rather than the score)
+<details>
+  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+  
 2) Learning normalized image densities via dual score matching: learn the log p directly.
    two tricks: keep the architecture (inductive biases already tested and evolved) and add the second loss (ties together the normalization factor (partition function) across the noise levels/times/ trajectory). Gets us within the state of the art NLL 
  
+</details>
 
 ## Understanding and Evaluating learned density models: 
 scientifc method shines: deep nets have evolves through a natural selection, we can examine them by hypothesizing about what they are and how they work, design controlled experiments to test them. 
