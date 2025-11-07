@@ -20,16 +20,14 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- I’m broadly interested in vision, and in particular in probability densities of natural images.
 My work explores different aspects of these densities — learning them from data, analyzing and evaluating the resulting models, and applying them to real-world problems. These directions are closely connected: gaining insight into a learned model can suggest ways to design better ones, while practical improvements often reveal something about what the model has captured from the underlying data. I enjoy studying these ideas from multiple perspectives and seeing how they inform one another.
  -->
-<details>
-  <summary><strong>Project A — Short teaser (click to expand)</strong></summary>
 
-  Your long project blurb, figures, links, etc.
-  - bullet 1
-  - bullet 2
 
-</details>
-
+# Research overview 
 ## Learning image density models from data: 
+
+<details>
+  <summary><strong> <span style="color:blue"> How to *learn* image density from data ? (click to expand)</span> </strong></summary>
+    
 1) in classical lit: design denoiser based on density. assume a density. design a basis in which signal and noise are separable (signal is compact, sparse and noise is dense). shrinkage
 - here: learning! can't a density directly, but can learn  denoiser (a non-linear regression problem). learn the good denoiser and then extract the density it is relying on (embedding).
 - How: tweedie: relationship between grad of log p and the denoising function.
@@ -49,6 +47,10 @@ My work explores different aspects of these densities — learning them from dat
  Gaussian denoising is arguably the most simple and fundamental problem in image processing. In classical (i.e. pre-deep learning era) probabilistic signal processing, engineering denoisers relied on assuming a density model over the signal (images) and a transformation that takes the image 
 to design a denoiser, one assumes a probability distribution over the signal (images), for example spectral Gaussian, and then finds a represenation in which the signal is 
  
+
+</details>
+
+
 
 2) Learning normalized image densities via dual score matching: learn the log p directly.
    two tricks: keep the architecture (inductive biases already tested and evolved) and add the second loss (ties together the normalization factor (partition function) across the noise levels/times/ trajectory). Gets us within the state of the art NLL 
