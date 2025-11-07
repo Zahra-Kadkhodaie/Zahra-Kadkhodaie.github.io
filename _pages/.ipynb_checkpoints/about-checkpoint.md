@@ -27,9 +27,9 @@ My work explores different aspects of these densities — learning them from dat
 
 
 
-Deep neural network denoisers have implicit image densities in them (aka Score-based reverse diffusion models). 
+
 <details>
-  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+  <summary><strong> <span style="color:blue"> Deep neural network denoisers have implicit image densities in them (aka Score-based reverse diffusion models).  (click to expand)</span> </strong></summary>
 
 in classical lit: design denoiser based on density. assume a density. design a basis in which signal and noise are separable (signal is compact, sparse and noise is dense). shrinkage
 - here: learning! can't a density directly, but can learn  denoiser (a non-linear regression problem). learn the good denoiser and then extract the density it is relying on (embedding).
@@ -54,9 +54,9 @@ to design a denoiser, one assumes a probability distribution over the signal (im
 </details>
 
 <!-- ------------------------------------------------- -->
-How to learn a model to predict energy directly? (Rather than the score)
+
 <details>
-  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+  <summary><strong> <span style="color:blue"> How to learn a model to predict energy directly? (Rather than the score) (click to expand)</span> </strong></summary>
   
 2) Learning normalized image densities via dual score matching: learn the log p directly.
    two tricks: keep the architecture (inductive biases already tested and evolved) and add the second loss (ties together the normalization factor (partition function) across the noise levels/times/ trajectory). Gets us within the state of the art NLL 
@@ -72,10 +72,10 @@ why do we care about understanding? predict when generalization and when fails
 
 
 
-Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) 
+
 
 <details>
-  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+  <summary><strong> <span style="color:blue"> Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold)  (click to expand)</span> </strong></summary>
 
 1) Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
 Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
@@ -89,11 +89,10 @@ Both filtering and basis are noise level dependent. This can be formulated in a 
 </details>
 
 
-Learning multi-scale local conditional probability models of images: conditional locality
 <details>
-  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+  <summary><strong> <span style="color:blue"> Conditional locality of image densities (click to expand)</span> </strong></summary>
+Learning multi-scale local conditional probability models of images: conditional locality
 
-2) 
    How do denoisers embed densities despite the curse of dimensionality?
    Factorizing to lower dimensional densities. (old trick, markov random fields)
    first learn global coarse stuff (big features). Don't need all the details -> down sample. zero padding -> breaking translation invariance.
@@ -104,25 +103,32 @@ Learning multi-scale local conditional probability models of images: conditional
 </details>
 
 
+<details>
+  <summary><strong> <span style="color:blue"> Generalization in diffusion models (click to expand)</span> </strong></summary>
 
 3) generalization paper:
   strong generalization
    GAHBs
+</details>
 
+
+<details>
+  <summary><strong> <span style="color:blue"> unsupervised representation learning via denoising (click to expand)</span> </strong></summary>
 
 4) representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
+</details>
    
    
    
 ## Utilizing learned density models to solve inverse problems: 
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
-### Linear 
+### Linear inverse problems 
 Solving inverse problem (updated version neurips)
 optimal measurement 
 cone excitation
-### non-linear 
+### non-linear inverse problems
 - feature- guided 
 - texture model 
 
