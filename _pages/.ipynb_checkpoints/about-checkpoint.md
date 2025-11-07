@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
  
-I’m a Research Fellow at the [Flatiron Institute](https://www.simonsfoundation.org/flatiron/), Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the [Center for Data Science](https://cds.nyu.edu/) at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
+I’m a Research Fellow at the [Flatiron Institute](https://www.simonsfoundation.org/flatiron/), Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the [Center for Data Science](https://cds.nyu.edu/) at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). See my [thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf) here. I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
 
 I'm broadly interested in vision and more specifically in **probability densities of natural images**. 
 I have studied these densities from various angles: ***learning*** them from data, ***understanding and evaluating*** the learned models, and ***utilizing*** them for real-world problems. These areas are closely intertwined: understanding a learned model can inspire the design of better and more efficient ones. Conversely, practical advances can hint at something meaningful the model has captured about the underlying data structures.
@@ -18,9 +18,13 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- reveal new insights into the structure of natural images. -->
 
 # Research 
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
+
 ## Learning image density models from data: 
 
-### <span style="color:green"> Learning and sampling from the density implicit in a denoiser </span>
+### <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
 
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of suspaces, Markov random fields) and then to estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
@@ -49,11 +53,24 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 
 <!-- ------------------------------------------------- -->
 
-### <span style="color:green"> Learning normalized image density (Rather than the score) </span>
+### <span style="color:blue"> Learning normalized image density rather than the score </span>
+Can we make the embeded prior in a denoiser even more explict by predicting the energy ($$- \log p$$) rather than the score ($$ \nabla \log p$$)? There are two main problems to tackle to make this transition: 1) finding the right architecture and second and 2) normalizing the density. Neither of these problems exit for score models: through a massive collective effort the architecures have been imporved and refined to have the right inductive biases. This evolution has not happened for energy models, putting their performacne at a significant disadvange. Additionally, in score models, thanls to the gradient, the normalizing factor (partition function) goes away resolving the problem automatically. In the paper below, we introduced two simple tricks to overcome these issues. 
+
+First, we 
+
 
 Learning normalized image densities via dual score matching: learn the log p directly.
+
    two tricks: keep the architecture (inductive biases already tested and evolved) and add the second loss (ties together the normalization factor (partition function) across the noise levels/times/ trajectory). Gets us within the state of the art NLL 
  
+Paper: 
+
+- Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
+
+
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
 
 ## Understanding and Evaluating learned density models: 
 scientifc method shines: deep nets have evolves through a natural selection, we can examine them by hypothesizing about what they are and how they work, design controlled experiments to test them. 
@@ -63,10 +80,11 @@ what is a good model?
 why do we care about understanding? predict when generalization and when fails
 
 
-<details>
-  <summary><strong> <span style="color:blue"> Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold)  (click to expand)</span> </strong></summary>
+<!-- ------------------------------------------------- -->
 
-1) Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
+### <span style="color:blue">  Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) </span>
+
+Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
 Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
 with deep net denoiser: they solve the denoisng problem by non-linear regression (like every other problem). can we deepen our shallow understading of deep nets? How do they work? What is the transformed space they operate in? 
 We made one change to make the network more analyzable: removing addetive constant (call bais in pytorch implementation) from the model to make it locally linear. Now we can use linear algebra! 
@@ -75,11 +93,11 @@ intrepret rows: filtering: old lit. point is the increasing size of weighted ave
 interpret columns: basis in which a noisy image is being denoised 
 
 Both filtering and basis are noise level dependent. This can be formulated in a noise-dependent effective dimesionality 
-</details>
 
 
-<details>
-  <summary><strong> <span style="color:blue"> Conditional locality of image densities (click to expand)</span> </strong></summary>
+<!-- ------------------------------------------------- -->
+
+### <span style="color:blue"> Conditional locality of image densities (click to expand)</span>
 Learning multi-scale local conditional probability models of images: conditional locality
 
    How do denoisers embed densities despite the curse of dimensionality?
@@ -89,47 +107,48 @@ Learning multi-scale local conditional probability models of images: conditional
    give an example: if you have a blurred outline of the face and locations of the details, then you can refine it
    How small can you make the RF or neighborhood in the MRF model? We showed you can go pretty small.
    Does this hold in more complex cases? Linear encoding can only takes us so far, 
-</details>
 
 
-<details>
-  <summary><strong> <span style="color:blue"> Generalization in diffusion models (click to expand)</span> </strong></summary>
+<!-- ------------------------------------------------- -->
 
-3) generalization paper:
+### <span style="color:blue"> Generalization in diffusion models (click to expand)</span>
+generalization paper:
   strong generalization
    GAHBs
-</details>
 
 
-<details>
-  <summary><strong> <span style="color:blue"> unsupervised representation learning via denoising (click to expand)</span> </strong></summary>
+<!-- ------------------------------------------------- -->
 
-4) representation
+### <span style="color:blue"> unsupervised representation learning via denoising (click to expand)</span>
+representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
-</details>
-   
-5) energy model: energy distribution of images    
+
+
+###    <span style="color:blue"> Unbelievably vast range of natural image probabilities </span>
+
+energy model: energy distribution of images    
+
+
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
    
 ## Utilizing learned density models to solve inverse problems: 
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
+
 ### Linear inverse problems 
-<details>
-  <summary><strong> <span style="color:blue"> Solving inverse problem(click to expand)</span> </strong></summary>
- (updated version neurips)
-</details>
+<!-- ------------------------------------------------- -->
+
+### <span style="color:blue"> Solving inverse problem(click to expand)</span>
+<!-- ------------------------------------------------- -->
+
+### <span style="color:blue"> optimal measurement (click to expand)</span>
+<!-- ------------------------------------------------- -->
 
 
-<details>
-  <summary><strong> <span style="color:blue"> optimal measurement (click to expand)</span> </strong></summary>
- (updated version neurips)
-</details>
-
- 
-<details>
-  <summary><strong> <span style="color:blue"> cone excitation (click to expand)</span> </strong></summary>
- (updated version neurips)
-</details>
+### <span style="color:blue"> cone excitation (click to expand)</span>
+<!-- ------------------------------------------------- -->
 
 
 ### non-linear inverse problems
@@ -139,5 +158,4 @@ Ultimately, we want to learn the density to use it! Inverse problems in signal p
 
 
 
-<!-- My PhD thesis link  -->
 
