@@ -27,9 +27,12 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of suspaces, Markov random fields) and then to estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
+
 Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* 
 
+
 Remarkably, in the case of Gaussian denoising, the relationship between the denoising mapping and the prior is exact and explicit, thanks to a classical statistics result [Robin 1956, Miyasawa 1961]: 
+
 
 $$ \hat{x}(y) = y + \sigma^2 \nabla_y \log p (y)$$
 
@@ -37,13 +40,7 @@ See Raphan for proof.
 
 A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes the score (gradient of the log probablity) of noisy images, $$y$$. When the DNN denoiser learns to solve the problem at all nosie levels, it could be used in an iterative **coarse-to-fine gradient ascent algorithm**  to sample from the density embedded in the denoiser. We introduced this algorithm in the paper below. Its core idea parallels to what later became known as **diffusion models**.  
 
-[fig1 - manifold]
-[fig2- sampling trajectory]
-
 A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
-
-[fig3 - high vs low beta]
-[fig4 - convergence]
 
 
 Paper: 
