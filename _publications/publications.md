@@ -23,14 +23,14 @@ Complete list of papers at [Google Scholar](https://scholar.google.com/citations
 
 - Z. Kadkhodaie, **Natural Image Densities: Learning, Understanding and Utilizing**. PhD thesis, New York University, July 2024.
 
-- Z. Kadkhodaie, F. Guth, E. P. Simoncelli, S. Mallat **Generalization in diffusion models arises from geometry-adaptive harmonic representations**. ICLR, 2024. <br>
+- Z. Kadkhodaie, F. Guth, E. P. Simoncelli, S. Mallat **Generalization in diffusion models arises from geometry-adaptive harmonic representations**. ICLR, 2024 (**Best paper award & oral**). <br>
  [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
 
-- Z. Kadkhodaie, F. Guth, S. Mallat, E. P. Simoncelli, **Learning multi-scale local conditional probability models of images**. ICLR, 2023. <br>
+- Z. Kadkhodaie, F. Guth, S. Mallat, E. P. Simoncelli, **Learning multi-scale local conditional probability models of images**. ICLR, 2023 (**Oral**). <br>
   [PDF](https://openreview.net/pdf?id=VZX2I_VVJKH) | [Project page](https://github.com/LabForComputationalVision/local-probability-models-of-images)
   
 - Z Kadkhodaie, E. P. Simoncelli, **Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser**. NeurIPS, 2021. <br>
-  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)
+  [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)
 
 - Z. Kadkhodaie & E. P. Simoncelli, **Solving linear inverse problems using the prior implicit in a denoiser**. arXiv, 2020.<br>
   [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)
