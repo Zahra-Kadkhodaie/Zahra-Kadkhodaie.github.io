@@ -58,18 +58,18 @@ Can we make the embeded prior in a denoiser even more explict by predicting the 
 
 First, we showed that we can re-purpose score model architetures for energy models, by setting the energy to be 
 
-$$U_{\theta}(y, t) =  \frac{1}{2} \angle y , s_{\theta}(y,t)$$
+$$U_{\theta}(y, t) =  \frac{1}{2} \langle y , s_{\theta}(y,t) \rangle$$
 
 for this to be true, the score  model is required to be conservative and homogeneous.
 
-Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation holds across time (noise levels). In effect, it ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infity)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
+Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation holds across time (noise levels). In effect, it ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
 
 (Add fig, connected path )
 
 These two changes do not deteriorate denoisnig performance, meaning that the optimum for the dual loss happens at the same place as the single loss. 
 
 
-A model trained using these two tricks compute $$-\log p(x)$$  in one forward pass (**1000 times** faster than cumbersome computation using a score model). 
+A model trained using these two tricks compute $$\log p(x)$$  in one forward pass (**1000 times** faster than cumbersome computation using a score model). 
 
 A good energy model assigns low energy to in distribution images. We test this on a model trained on ImageNet and show that $$-\log p(x)$$ are within the state-of-the-art range. 
 
