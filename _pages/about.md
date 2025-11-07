@@ -27,7 +27,7 @@ My work explores different aspects of these densities — learning them from dat
 
 
 
-### Deep neural network denoisers have implicit image densities in them (aka Score-based reverse diffusion models). 
+Deep neural network denoisers have implicit image densities in them (aka Score-based reverse diffusion models). 
 <details>
   <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
 
@@ -54,7 +54,7 @@ to design a denoiser, one assumes a probability distribution over the signal (im
 </details>
 
 <!-- ------------------------------------------------- -->
-### How to learn a model to predict energy directly? (Rather than the score)
+How to learn a model to predict energy directly? (Rather than the score)
 <details>
   <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
   
@@ -71,6 +71,12 @@ what is a good model?
 why do we care about understanding? predict when generalization and when fails
 
 
+
+Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) 
+
+<details>
+  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+
 1) Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
 Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
 with deep net denoiser: they solve the denoisng problem by non-linear regression (like every other problem). can we deepen our shallow understading of deep nets? How do they work? What is the transformed space they operate in? 
@@ -80,9 +86,14 @@ intrepret rows: filtering: old lit. point is the increasing size of weighted ave
 interpret columns: basis in which a noisy image is being denoised 
 
 Both filtering and basis are noise level dependent. This can be formulated in a noise-dependent effective dimesionality 
+</details>
 
 
-2) Learning multi-scale local conditional probability models of images: conditional locality
+Learning multi-scale local conditional probability models of images: conditional locality
+<details>
+  <summary><strong> <span style="color:blue"> Teaser (click to expand)</span> </strong></summary>
+
+2) 
    How do denoisers embed densities despite the curse of dimensionality?
    Factorizing to lower dimensional densities. (old trick, markov random fields)
    first learn global coarse stuff (big features). Don't need all the details -> down sample. zero padding -> breaking translation invariance.
@@ -90,6 +101,9 @@ Both filtering and basis are noise level dependent. This can be formulated in a 
    give an example: if you have a blurred outline of the face and locations of the details, then you can refine it
    How small can you make the RF or neighborhood in the MRF model? We showed you can go pretty small.
    Does this hold in more complex cases? Linear encoding can only takes us so far, 
+</details>
+
+
 
 3) generalization paper:
   strong generalization
