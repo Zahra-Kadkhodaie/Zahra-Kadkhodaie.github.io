@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
  
-I’m a Research Fellow at the Flatiron Institute, Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the Center for Data Science at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). Here is my [thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf). I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
+I’m a Research Fellow at the Flatiron Institute, Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the Center for Data Scienceat New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). Here is my [thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf). I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
 
 I'm broadly interested in vision and more specifically in **probability densities of natural images**. 
 I have studied these densities from various angles: ***learning*** them from data, ***understanding and evaluating*** the learned models, and ***utilizing*** them for real-world problems. These areas are closely intertwined: understanding a learned model can inspire the design of better and more efficient ones. Conversely, better performance can hint at something meaningful the model has captured about the underlying data structures.
@@ -139,13 +139,18 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 # <span style="color:#A52A2A"> Understanding and Evaluating learned density models </span>
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
+Deep neural networks are many times more capable than their classical predecessors. They have grown increasingly complex and deep, while our understanding of them has remained comparatively shallow.
+Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for evaluating these learned models.
 
-scientifc method shines: deep nets have evolves through a natural selection, we can examine them by hypothesizing about what they are and how they work, design controlled experiments to test them. 
-shallow understanding of deep models.
-curse of dimensionality
-what is a good model? 
-why do we care about understanding? predict when generalization and when fails
+In the context of density learning, assessing how “good” a model really is depends on two questions:
 
+How well does it generalize?
+
+How accurately does it approximate the true density?
+
+Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do.
+
+I approach these questions through scientific experimentation: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
 
 <!-- ------------------------------------------------- -->
 
