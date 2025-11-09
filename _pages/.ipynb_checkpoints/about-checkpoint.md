@@ -44,9 +44,14 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 
 <p align="center">
   <img src="https://zahra-kadkhodaie.github.io/images/manifoldDiffusion.png" alt="Project schematic" width="70%">
-</p>
+<!-- </p> -->
+  <br>
 <p align="center">
-Two-dimensional simulation of the sampler. Forty example signals $x$ are sampled from a uniform prior on a manifold (green curve). First three panels show, for three different levels of noise, the noise-corrupted measurements of the signals (red points), the associated noisy signal distribution $p(y)$ (indicated with underlying grayscale intensities), and the least-squares optimal denoising solution $\hat{x}(y)$ for each (end of red line segments), as defined by Miyasawa/Tweedie equation. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel. Algorithm parameters were $h_0$ = 0.05 and $\beta= 1$ (i.e., no injected noise). Note that, unlike the single-step least-squares solutions, the iterative trajectories are curved, and always arrive at solutions on the signal manifold. </p>
+<span style="font-size: 0.85em; color: #555;">
+Two-dimensional simulation of the sampler. Forty example signals $x$ are sampled from a uniform prior on a manifold (green curve). First three panels show, for three different levels of noise, the noise-corrupted measurements of the signals (red points), the associated noisy signal distribution $p(y)$ (indicated with underlying grayscale intensities), and the least-squares optimal denoising solution $\hat{x}(y)$ for each (end of red line segments), as defined by Miyasawa/Tweedie equation. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel. Algorithm parameters were $h_0$ = 0.05 and $\beta= 1$ (i.e., no injected noise). Note that, unlike the single-step least-squares solutions, the iterative trajectories are curved, and always arrive at solutions on the signal manifold.
+</span>
+
+</p>
 
 
 <!-- <img src="/images/project_photo.jpg" alt="project image" width="300" align="left" style="margin-right:15px;"> -->
