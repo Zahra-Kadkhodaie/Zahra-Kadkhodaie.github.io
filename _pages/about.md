@@ -48,6 +48,16 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 The above figure shows a two-dimensional simulation of the sampler. Example signals $$x$$ are sampled from a uniform prior on a manifold (green curve). First three panels show, for three different levels of noise, the noise-corrupted measurements of the signals (red points), the associated noisy signal distribution $$p(y)$$ (indicated with underlying grayscale intensities), and the least-squares optimal denoising solution $$\hat{x}(y)$$ for each (end of red line segments), as defined by Miyasawa/Tweedie equation. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel. Algorithm parameters were $$h_0 = 0.05$$ and $$\beta= 1$$ (i.e., no injected noise). Note that, unlike the single-step least-squares solutions, the iterative trajectories are curved, and always arrive at solutions on the signal manifold.
 
 
+<p align="center">
+  <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/wfOq7kAc3Z8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+  </iframe>
+</p>
+
 
 A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
 
