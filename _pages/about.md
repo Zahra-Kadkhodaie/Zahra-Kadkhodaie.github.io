@@ -17,14 +17,14 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- when engineeing creativity leads to improved performance, it often hints at something meaningful the model has captured about the "true" natural image density.  -->
 <!-- reveal new insights into the structure of natural images. -->
 
-# Research 
+ 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-## Learning image density models from data: 
+# Learning image density models from data: 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
+## <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
 
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
@@ -92,10 +92,10 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue"> Learning normalized image density rather than the score </span>
+## <span style="color:blue"> Learning normalized image density rather than the score </span>
 Can the embeded prior in a denoiser be made more explict by predicting the energy ($$-\log p$$) rather than the score ($$ \nabla \log p$$)? 
 
-There are two main problems to tackle to make this happen: 1) finding the right architecture and 2) normalizing the density. Neither of these problems exit for score models. Architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues and learn $$-\log p$$ directly. 
+There are two main problems to tackle to make this happen: 1) finding the right architecture and 2) normalizing the density. Neither of these problems exit for score models. Architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues and learn $$\log p$$ directly. 
 
 First, we showed that score model architetures can be re-purposed for energy models, by setting the energy to be 
 
@@ -109,7 +109,7 @@ $$
 \ell_{\rm TSM}(\theta,t) = \mathbb{E}_{x,y} \left[{ \left( {\partial_t U_{\theta}(y,t) - \frac{d}{2t} + \frac{\Vert{y-x}\Vert^2} {2t^2}} \right)^2}\right]
 $$
 
-In effect, minimizing this term ties together the normalization factors of individual $$p(y,t)$$. Since the diffused density models are tied together, after training, we can set the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t \to \infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
+In effect, minimizing this term ties together the normalization factors of individual $$p(y,t)$$. Since the diffused density models are tied together, after training, we can set the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t \to \infty)$$ (Standard Gaussian) and transferring that to $$p(x)$$. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/diffusing_barrier_decorated.png" alt="Project schematic" width="30%"><br>
@@ -133,7 +133,7 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-## Understanding and Evaluating learned density models: 
+# Understanding and Evaluating learned density models: 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
@@ -146,7 +146,7 @@ why do we care about understanding? predict when generalization and when fails
 
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue">  Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) </span>
+## <span style="color:blue">  Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) </span>
 
 Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
 Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
@@ -161,7 +161,7 @@ Both filtering and basis are noise level dependent. This can be formulated in a 
 
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue"> Conditional locality of image densities (click to expand)</span>
+## <span style="color:blue"> Conditional locality of image densities</span>
 Learning multi-scale local conditional probability models of images: conditional locality
 
    How do denoisers embed densities despite the curse of dimensionality?
@@ -175,7 +175,7 @@ Learning multi-scale local conditional probability models of images: conditional
 
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue"> Generalization in diffusion models (click to expand)</span>
+## <span style="color:blue"> Generalization in diffusion models</span>
 generalization paper:
   strong generalization
    GAHBs
@@ -183,40 +183,40 @@ generalization paper:
 
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue"> unsupervised representation learning via denoising (click to expand)</span>
+## <span style="color:blue"> unsupervised representation learning via denoising</span>
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
 
 
-###    <span style="color:blue"> Unbelievably vast range of natural image probabilities </span>
+##    <span style="color:blue"> Unbelievably vast range of natural image probabilities </span>
 
 energy model: energy distribution of images    
 
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-## Utilizing learned density models to solve inverse problems: 
+# Utilizing learned density models to solve inverse problems: 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
 
-### Linear inverse problems 
+## Linear inverse problems 
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue"> Solving inverse problem(click to expand)</span>
+## <span style="color:blue"> Solving inverse problem(click to expand)</span>
 <!-- ------------------------------------------------- -->
 
-### <span style="color:blue"> optimal measurement (click to expand)</span>
-<!-- ------------------------------------------------- -->
-
-
-### <span style="color:blue"> cone excitation (click to expand)</span>
+## <span style="color:blue"> optimal measurement (click to expand)</span>
 <!-- ------------------------------------------------- -->
 
 
-### non-linear inverse problems
+## <span style="color:blue"> cone excitation (click to expand)</span>
+<!-- ------------------------------------------------- -->
+
+
+## non-linear inverse problems
 - feature- guided 
 - texture model 
 
