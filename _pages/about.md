@@ -42,10 +42,15 @@ See Raphan for proof.
 A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes the score (gradient of the log probablity) of noisy images, $$y$$. When the DNN denoiser learns to solve the problem at all nosie levels, it could be used in an iterative **coarse-to-fine gradient ascent algorithm**  to sample from the density embedded in the denoiser. We introduced this algorithm in the paper below. Its core idea parallels to what later became known as **diffusion models**.  
 
 
+
 <p align="center">
-  <img src="https://Zahra-Kadkhodaie.github.io/images/manifold_diffusion.png" >
-    Hereeee is some text describing the project that wraps around the image.
+  <img src="{{ '/images/manifold_diffusion.png' | relative_url }}" alt="Project schematic" width="70%">
 </p>
+<p align="center">
+  Here is some text describing the project that wraps around the image.
+</p>
+
+
 <!-- <img src="/images/project_photo.jpg" alt="project image" width="300" align="left" style="margin-right:15px;"> -->
 
 A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
