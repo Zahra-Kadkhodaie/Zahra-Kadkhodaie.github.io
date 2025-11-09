@@ -24,8 +24,8 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
-<!-- ## <span style="color:#9F000F"> Learning and sampling from the density implicit in a denoiser </span> -->
-## Learning and sampling from the density implicit in a denoiser
+## <span style="color:#008000"> Learning and sampling from the density implicit in a denoiser </span>
+<!-- ## Learning and sampling from the density implicit in a denoiser -->
 
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
