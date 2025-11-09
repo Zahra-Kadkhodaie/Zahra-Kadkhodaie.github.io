@@ -49,7 +49,7 @@ The above figure shows a two-dimensional simulation of the sampler. Example sign
 
 
 <p align="center">
-  <iframe width="560" height="315"
+  <iframe width="280" height="155"
           src="https://www.youtube.com/embed/wfOq7kAc3Z8"
           title="YouTube video player"
           frameborder="0"
