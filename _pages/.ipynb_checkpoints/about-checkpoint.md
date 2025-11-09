@@ -26,7 +26,7 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 
 ### <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
 
-Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then to estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
+Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
 
 Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* 
@@ -38,7 +38,7 @@ $$ \hat{x}(y) = y + \sigma^2 \nabla_y \log p (y)$$
 
 See [Raphan 2011](https://www.cns.nyu.edu/pub/eero/raphan10.pdf) for proof.
 
-A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes the score (gradient of the log probablity) of noisy images, $$y$$. When the DNN denoiser learns to solve the problem at all nosie levels, it could be used in an iterative **coarse-to-fine gradient ascent algorithm**  to sample from the density embedded in the denoiser. We introduced this algorithm in the paper below. Its core idea parallels to what later became known as **diffusion models**.  
+A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes the score (gradient of the log probablity) of noisy images, $$y$$. When the DNN denoiser learns to solve the problem at all nosie levels, it could be used in an iterative **coarse-to-fine gradient ascent algorithm**  to sample from the density embedded in the denoiser. We introduced this algorithm in the paper below. Its core idea is similar and concurrent to what became known as **diffusion models**.  
 
 
 <p align="center" markdown="1">
@@ -93,21 +93,23 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 <!-- ------------------------------------------------- -->
 
 ### <span style="color:blue"> Learning normalized image density rather than the score </span>
-Can the embeded prior in a denoiser be made more explict by predicting the energy ($$-\log p$$) rather than the score ($$ \nabla \log p$$)? There are two main problems to tackle to make this happen: 1) finding the right architecture and second and 2) normalizing the density. Neither of these problems exit for score models: architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues. 
+Can the embeded prior in a denoiser be made more explict by predicting the energy ($$-\log p$$) rather than the score ($$ \nabla \log p$$)? 
 
-First, we showed that we can re-purpose score model architetures for energy models, by setting the energy to be 
+There are two main problems to tackle to make this happen: 1) finding the right architecture and 2) normalizing the density. Neither of these problems exit for score models. Architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues and learn $$-\log p$$ directly. 
+
+First, we showed that score model architetures can be re-purposed for energy models, by setting the energy to be 
 
 $$U_{\theta}(y, t) =  \frac{1}{2} \langle y , s_{\theta}(y,t) \rangle$$
 
-for this to be true, the score  model is required to be conservative and homogeneous.
+<!-- for this to be true, the score  model is required to be conservative and homogeneous. -->
 
-Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation hold across time (noise levels). 
+Second, to get the normalization factor right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation hold across time (noise levels). 
 
 $$
 \ell_{\rm TSM}(\theta,t) = \mathbb{E}_{x,y} \left[{ \left( {\partial_t U_{\theta}(y,t) - \frac{d}{2t} + \frac{\Vert{y-x}\Vert^2} {2t^2}} \right)^2}\right]
 $$
 
-In effect, minimizing this term ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
+In effect, minimizing this term ties together the normalization factors of individual $$p(y,t)$$. Since the diffused density models are tied together, after training, we can set the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t \to \infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/diffusing_barrier_decorated.png" alt="Project schematic" width="30%"><br>
@@ -115,10 +117,12 @@ In effect, minimizing this term ties together the normalization constants of ind
   </span>
 </p>
 
-These two changes do not deteriorate denoisnig performance, meaning that the optimum for the dual loss happens at the same place as the single loss. A model trained using these two tricks compute $$\log p(x)$$  in one forward pass: **1000 times** faster than cumbersome computation using a score model. A good energy model assigns low energy to in distribution images. We test this on a model trained on ImageNet and show that $$-\log p(x)$$ are within the state-of-the-art range. 
+These two changes do not deteriorate denoisnig performance, which implies the minimizers of the two terms in the dual loss do not fight but reinfornce one another. A model trained using these two tricks returns $$\log p(x)$$ in only one forward pass: **1000 times** faster than cumbersome computation using a score model. 
+
+A good energy model assigns low energy to in-distribution images. We test this on a model trained on ImageNet and show that $$-\log p(x)$$ are within the state-of-the-art range. 
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/table2.png" alt="Project schematic" width="80%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/table2.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">
   </span>
 </p>
