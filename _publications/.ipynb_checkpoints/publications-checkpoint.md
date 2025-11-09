@@ -12,7 +12,7 @@ Complete list of papers at [Google Scholar](https://scholar.google.com/citations
 - Z. Kadkhodaie, S. Mallat, E. P. Simoncelli, **Unconditional CNN denoiser contain sparse semantic representations of images**. arXiv, 2025.<br>
  [PDF](https://arxiv.org/pdf/2506.01912)
 
-- F Guth, Z Kadkhodaie, EP Simoncelli, **Learning normalized image densities via dual score matching**. NeurIPS, 2025 <br>
+- F. Guth, Z Kadkhodaie, E. P. Simoncelli, **Learning normalized image densities via dual score matching**. NeurIPS, 2025 <br>
  [PDF](https://arxiv.org/pdf/2506.05310)
 
 - L. Q. Zhang, Z. Kadkhodaie, E. P. Simoncelli, D. H. Brainard, **Generalized Compressed Sensing for Image Reconstruction with Diffusion Probabilistic Models**. TMLR, 2025
@@ -21,7 +21,8 @@ Complete list of papers at [Google Scholar](https://scholar.google.com/citations
 - Z. Kadkhodaie, S. Mallat, E. P. Simoncelli, **Feature-guided score diffusion for sampling conditional densities**. arXiv, 2024. <br>
   [PDF](https://arxiv.org/pdf/2410.11646?)
 
-- Z. Kadkhodaie, **Natural Image Densities: Learning, Understanding and Utilizing**. PhD thesis, New York University, July 2024.
+- Z. Kadkhodaie, **Natural Image Densities: Learning, Understanding and Utilizing**. PhD thesis, New York University, July 2024.<br>
+  [PDF](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf)
 
 - Z. Kadkhodaie, F. Guth, E. P. Simoncelli, S. Mallat **Generalization in diffusion models arises from geometry-adaptive harmonic representations**. ICLR, 2024 (**Best paper award & oral**). <br>
  [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
