@@ -49,7 +49,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 
 
 <p align="center">
-  <iframe width="280" height="155"
+  <iframe width="70%" height="155"
           src="https://www.youtube.com/embed/wfOq7kAc3Z8"
           title="YouTube video player"
           frameborder="0"
@@ -59,9 +59,16 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 </p>
 
 
-A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
+A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. 
 
+Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/beta_effect.png" alt="Project schematic" width="70%"><br>
+</p>
 
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/convergence.png" alt="Project schematic" width="70%"><br>
+</p>
 **Reference:** <br>
 ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
 Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
