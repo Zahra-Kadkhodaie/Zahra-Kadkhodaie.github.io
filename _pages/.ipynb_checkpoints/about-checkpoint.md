@@ -42,7 +42,10 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/manifold_diffusion2.png" alt="Project schematic" width="90%"><br>
 </p>
-The above figure shows a two-dimensional simulation of the sampler. Example signals $$x$$ are sampled from a uniform prior on a manifold (green curve). First three panels show, for three different levels of noise, the noise-corrupted measurements of the signals (red points), the associated noisy signal distribution $$p(y)$$ (indicated with underlying grayscale intensities), and the least-squares optimal denoising solution $$\hat{x}(y)$$ for each (end of red line segments), as defined by Miyasawa/Tweedie equation. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel. Algorithm parameters were $$h_0 = 0.05$$ and $$\beta= 1$$ (i.e., no injected noise). Note that, unlike the single-step least-squares solutions, the iterative trajectories are curved, and always arrive at solutions on the signal manifold.*
+  <span style="font-size: 0.80em; color: #555;">
+    A two-dimensional simulation of the sampler. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel (without any injected noise). The iterative trajectories are curved, and always arrive at solutions on the signal manifold.
+  </span>
+
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/trajectory_mnist.png" alt="Project schematic" width="80%"><br>
 <img src="https://zahra-kadkhodaie.github.io/images/trajectory_patches.png" alt="Project schematic" width="60%"><br>
