@@ -26,7 +26,7 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 
 ### <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
 
-Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of suspaces, Markov random fields) and then to estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
+Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then to estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
 
 Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* 
@@ -49,7 +49,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 </p>
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/trajectory_mnist.png" alt="Project schematic" width="80%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/trajectory_mnist.png" alt="Project schematic" width="70%"><br>
 <!-- <img src="https://zahra-kadkhodaie.github.io/images/trajectory_patches.png" alt="Project schematic" width="60%"><br> -->
   <span style="font-size: 0.80em; color: #555;">
     Example sampling trajectory for a model trained on MNIST images.
@@ -68,7 +68,6 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 
 
 A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. 
-
 Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
 
 
@@ -80,7 +79,7 @@ Left: Noise level of the sample as a function of iteration in synthesis, shown f
 </p>
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/beta_effect.png" alt="Project schematic" width="70%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/beta_effect.png" alt="Project schematic" width="50%"><br>
       <span style="font-size: 0.80em; color: #555;">
 More noise during synthesis results in sampling higher probability images (right panel) by escaping smaller maxima of density. 
   </span>
