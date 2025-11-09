@@ -43,7 +43,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 
 
 <p align="center">
-  <img src="/images/manifold_diffusion.png" alt="Project schematic" width="70%">
+  <img src="https://Zahra-Kadkhodaie.github.io/images/manifold_diffusion.png" alt="Project schematic" width="70%">
     Here is some text describing the project that wraps around the image.
 </p>
 <!-- <img src="/images/project_photo.jpg" alt="project image" width="300" align="left" style="margin-right:15px;"> -->
@@ -51,7 +51,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
 
 
-Reference: <br>
+**Reference:** <br>
 ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
 Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
 
@@ -88,7 +88,7 @@ A good energy model assigns low energy to in distribution images. We test this o
 
 (add table NLL)
  
-Reference:  <br>
+**Reference:**  <br>
 Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
 
 
