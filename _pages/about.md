@@ -7,10 +7,10 @@ redirect_from:
   - /about.html
 ---
  
-I’m a Research Fellow at the [Flatiron Institute](https://www.simonsfoundation.org/flatiron/), Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the [Center for Data Science](https://cds.nyu.edu/) at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). See my [thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf) here. I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
+I’m a Research Fellow at the [Flatiron Institute](https://www.simonsfoundation.org/flatiron/), Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I did a Ph.D. in Data Science at the [Center for Data Science](https://cds.nyu.edu/) at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). Here is my [thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf). I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
 
 I'm broadly interested in vision and more specifically in **probability densities of natural images**. 
-I have studied these densities from various angles: ***learning*** them from data, ***understanding and evaluating*** the learned models, and ***utilizing*** them for real-world problems. These areas are closely intertwined: understanding a learned model can inspire the design of better and more efficient ones. Conversely, practical advances can hint at something meaningful the model has captured about the underlying data structures.
+I have studied these densities from various angles: ***learning*** them from data, ***understanding and evaluating*** the learned models, and ***utilizing*** them for real-world problems. These areas are closely intertwined: understanding a learned model can inspire the design of better and more efficient ones. Conversely, better performance can hint at something meaningful the model has captured about the underlying data structures.
 I enjoy studying these complementary perspectives and seeing how they inform one another through careful and controlled **scientific** experimentation. 
 
 
@@ -20,7 +20,7 @@ I enjoy studying these complementary perspectives and seeing how they inform one
  
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# Learning image density models from data: 
+# Learning image density models from data 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
@@ -109,7 +109,7 @@ $$
 \ell_{\rm TSM}(\theta,t) = \mathbb{E}_{x,y} \left[{ \left( {\partial_t U_{\theta}(y,t) - \frac{d}{2t} + \frac{\Vert{y-x}\Vert^2} {2t^2}} \right)^2}\right]
 $$
 
-In effect, minimizing this term ties together the normalization factors of individual $$p(y,t)$$. Since the diffused density models are tied together, after training, we can set the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t \to \infty)$$ (Standard Gaussian) and transferring that to $$p(x)$$. 
+In effect, minimizing this term ties together the normalization factors of individual $$p(y,t)$$. Since the diffused density models are tied together, after training, we can set the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t \to \infty)$$ (Standard Gaussian) and then transferring it to $$p(x)$$. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/diffusing_barrier_decorated.png" alt="Project schematic" width="30%"><br>
@@ -117,7 +117,7 @@ In effect, minimizing this term ties together the normalization factors of indiv
   </span>
 </p>
 
-These two changes do not deteriorate denoisnig performance, which implies the minimizers of the two terms in the dual loss do not fight but reinfornce one another. A model trained using these two tricks returns $$\log p(x)$$ in only one forward pass: **1000 times** faster than cumbersome computation using a score model. 
+These two changes do not deteriorate denoisnig performance. This implies the minimizers of the two terms in the dual loss do not fight but reinfornce one another. A model trained using these two tricks returns $$\log p(x)$$ in only one forward pass: **1000 times** faster than cumbersome computation using a score model. 
 
 A good energy model assigns low energy to in-distribution images. We test this on a model trained on ImageNet and show that $$-\log p(x)$$ are within the state-of-the-art range. 
 
@@ -133,7 +133,7 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# Understanding and Evaluating learned density models: 
+# Understanding and Evaluating learned density models 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
@@ -175,7 +175,7 @@ Learning multi-scale local conditional probability models of images: conditional
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue"> Generalization in diffusion models</span>
+## <span style="color:#457b9d"> Generalization in diffusion models</span>
 generalization paper:
   strong generalization
    GAHBs
@@ -183,20 +183,20 @@ generalization paper:
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue"> unsupervised representation learning via denoising</span>
+## <span style="color:#1d3557"> unsupervised representation learning via denoising</span>
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
 
 
-##    <span style="color:blue"> Unbelievably vast range of natural image probabilities </span>
+##    <span style="color:#e63946"> Unbelievably vast range of natural image probabilities </span>
 
 energy model: energy distribution of images    
 
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# Utilizing learned density models to solve inverse problems: 
+# Utilizing learned density models to solve inverse problems 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
@@ -205,10 +205,10 @@ Ultimately, we want to learn the density to use it! Inverse problems in signal p
 ## Linear inverse problems 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue"> Solving inverse problem(click to expand)</span>
+## <span style="color:#588157"> Solving inverse problem(click to expand)</span>
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue"> optimal measurement (click to expand)</span>
+## <span style="color:#555555"> optimal measurement (click to expand)</span>
 <!-- ------------------------------------------------- -->
 
 

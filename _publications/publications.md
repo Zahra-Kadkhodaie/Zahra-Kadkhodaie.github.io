@@ -15,7 +15,7 @@ Complete list of papers at [Google Scholar](https://scholar.google.com/citations
 - F. Guth, Z Kadkhodaie, E. P. Simoncelli, **Learning normalized image densities via dual score matching**. NeurIPS, 2025 <br>
  [PDF](https://arxiv.org/pdf/2506.05310)
 
-- L. Q. Zhang, Z. Kadkhodaie, E. P. Simoncelli, D. H. Brainard, **Generalized Compressed Sensing for Image Reconstruction with Diffusion Probabilistic Models**. TMLR, 2025
+- L. Q. Zhang, Z. Kadkhodaie, E. P. Simoncelli, D. H. Brainard, **Generalized Compressed Sensing for Image Reconstruction with Diffusion Probabilistic Models**. TMLR, 2025 (J2C ICLR2026)
  [PDF](https://openreview.net/pdf?id=lmHh4FmPWZ) | [Project page](https://github.com/lingqiz/optimal-measurement)
 
 - Z. Kadkhodaie, S. Mallat, E. P. Simoncelli, **Feature-guided score diffusion for sampling conditional densities**. arXiv, 2024. <br>
