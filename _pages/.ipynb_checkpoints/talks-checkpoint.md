@@ -8,6 +8,7 @@ author_profile: true
 
 **Elucidating the Representation of Images Within an Unconditional Diffusion Model Denoiser**
 <!-- June 2025 - our lab meeting-->
+- AI + Physics Workshop at Graduate Center, CUNY, New York -- Sept 2025
 - Center for Computational Mathematics Reading Group, Flatiron Institute, New York -- Jun 2025
 - CSAIL, MIT -- May 2025
 

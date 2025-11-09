@@ -44,8 +44,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
 
 
-Paper: 
-
+Reference: <br>
 ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
 Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
 
@@ -62,7 +61,14 @@ $$U_{\theta}(y, t) =  \frac{1}{2} \langle y , s_{\theta}(y,t) \rangle$$
 
 for this to be true, the score  model is required to be conservative and homogeneous.
 
-Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation holds across time (noise levels). In effect, it ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
+Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation holds across time (noise levels). 
+
+$$
+    \ell_{\rm TSM}(\theta,t) = \expect[x,y]{\paren{\partial_t \energy(y,t) - \frac{d}{2t} + \frac{\norm{y-x}^2}{2t^2}}^2} .
+$$
+
+In effect, it ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
+
 
 (Add fig, connected path )
 
@@ -75,9 +81,8 @@ A good energy model assigns low energy to in distribution images. We test this o
 
 (add table NLL)
  
-Paper: 
-
-- Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
+Reference:  <br>
+Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
 
 
 <!-- ------------------------------------------------- -->
