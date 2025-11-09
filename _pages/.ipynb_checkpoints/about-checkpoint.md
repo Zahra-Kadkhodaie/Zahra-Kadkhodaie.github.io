@@ -25,7 +25,7 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- ------------------------------------------------- -->
 
 <!-- ## <span style="color:#9F000F"> Learning and sampling from the density implicit in a denoiser </span> -->
-## Learning and sampling from the density implicit in a denoiser </span>
+## Learning and sampling from the density implicit in a denoiser
 
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
@@ -93,7 +93,9 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#9F000F"> Learning normalized image density rather than the score </span>
+<!-- ## <span style="color:#9F000F"> Learning normalized image density rather than the score </span> -->
+## Learning normalized image density rather than the score
+
 Can the embeded prior in a denoiser be made more explict by predicting the energy ($$-\log p$$) rather than the score ($$ \nabla \log p$$)? 
 
 There are two main problems to tackle to make this happen: 1) finding the right architecture and 2) normalizing the density. Neither of these problems exit for score models. Architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues and learn $$\log p$$ directly. 
@@ -134,7 +136,7 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# Understanding and Evaluating learned density models 
+# <span style="color:#A52A2A"> Understanding and Evaluating learned density models </span>
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
@@ -147,8 +149,8 @@ why do we care about understanding? predict when generalization and when fails
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#3F9B0B">  Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) </span>
-
+## Denoising is a soft projection on an adaptive basis  
+(tangent plane of a blurred manifold)
 Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
 Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
 with deep net denoiser: they solve the denoisng problem by non-linear regression (like every other problem). can we deepen our shallow understading of deep nets? How do they work? What is the transformed space they operate in? 
@@ -162,7 +164,7 @@ Both filtering and basis are noise level dependent. This can be formulated in a 
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#3F9B0B"> Conditional locality of image densities</span>
+## Conditional locality of image densities
 Learning multi-scale local conditional probability models of images: conditional locality
 
    How do denoisers embed densities despite the curse of dimensionality?
@@ -176,7 +178,7 @@ Learning multi-scale local conditional probability models of images: conditional
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#3F9B0B"> Generalization in diffusion models</span>
+## Generalization in diffusion models
 generalization paper:
   strong generalization
    GAHBs
@@ -184,20 +186,20 @@ generalization paper:
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#3F9B0B"> unsupervised representation learning via denoising</span>
+## unsupervised representation learning via denoising
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
 
 
-## <span style="color:#3F9B0B"> Unbelievably vast range of natural image probabilities </span>
+## Unbelievably vast range of natural image probabilities 
 
 energy model: energy distribution of images    
 
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# Utilizing learned density models to solve inverse problems 
+# <span style="color:#A52A2A"> Utilizing learned density models to solve inverse problems </span>
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
@@ -206,14 +208,14 @@ Ultimately, we want to learn the density to use it! Inverse problems in signal p
 ## Linear inverse problems 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#A23BEC"> Solving inverse problem(click to expand)</span>
+## Solving inverse problem(click to expand)
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#A23BEC"> optimal measurement (click to expand)</span>
+## optimal measurement (click to expand)
 <!-- ------------------------------------------------- -->
 
 
-## <span style="color:#A23BEC"> cone excitation (click to expand)</span>
+##  cone excitation (click to expand)
 <!-- ------------------------------------------------- -->
 
 
