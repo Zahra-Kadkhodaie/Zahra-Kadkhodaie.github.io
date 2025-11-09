@@ -140,29 +140,24 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 Deep neural networks are many times more capable than their classical predecessors. They have grown increasingly complex and deep, while our understanding of them has remained comparatively shallow.
-Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for evaluating these learned models.
-
-In the context of density learning, assessing how “good” a model really is depends on two questions:
-
-How well does it generalize?
-
-How accurately does it approximate the true density?
-
-Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do.
-
-I approach these questions through scientific experimentation: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
+Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for evaluating these learned models. In the context of density learning, assessing how “good” a model really is depends on two questions: 1) *How well does it generalize?* 2) *How accurately does it approximate the true density?* Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do. I approach these questions through **scientific experimentation**: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
 
 <!-- ------------------------------------------------- -->
 
-## Denoising is a soft projection on an adaptive basis  
-(tangent plane of a blurred manifold)
-Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
-Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
-with deep net denoiser: they solve the denoisng problem by non-linear regression (like every other problem). can we deepen our shallow understading of deep nets? How do they work? What is the transformed space they operate in? 
+## <span style="color:#008000">  Denoising is a soft projection on an adaptive basis  </span>
+Many of the pre-deep net denoisers can be summarized into three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function to suppress noise, 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the  transformed sapce shoud be as sparse and compact as possible. 
+
+Due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), hence not able to capture the intrinsic low-dimensionality of images. 
+
+In the Bayesian tradition of image processing, 
+
+with deep net denoiser: they solve the denoisng problem by non-linear regression (like every other problem).  How do they work? What is the transformed space they operate in? 
+
 We made one change to make the network more analyzable: removing addetive constant (call bais in pytorch implementation) from the model to make it locally linear. Now we can use linear algebra! 
 Jacobian: symmetric 
 intrepret rows: filtering: old lit. point is the increasing size of weighted averging. Model figures out the noise size (size of neighborhood) and is adaptive to the content 
 interpret columns: basis in which a noisy image is being denoised 
+(tangent plane of a blurred manifold)
 
 Both filtering and basis are noise level dependent. This can be formulated in a noise-dependent effective dimesionality 
 

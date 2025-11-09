@@ -140,21 +140,11 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 Deep neural networks are many times more capable than their classical predecessors. They have grown increasingly complex and deep, while our understanding of them has remained comparatively shallow.
-Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for evaluating these learned models.
-
-In the context of density learning, assessing how “good” a model really is depends on two questions:
-
-How well does it generalize?
-
-How accurately does it approximate the true density?
-
-Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do.
-
-I approach these questions through scientific experimentation: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
+Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for evaluating these learned models. In the context of density learning, assessing how “good” a model really is depends on two questions: 1) *How well does it generalize?* 2) *How accurately does it approximate the true density?* Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do. I approach these questions through **scientific experimentation**: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
 
 <!-- ------------------------------------------------- -->
 
-## Denoising is a soft projection on an adaptive basis  
+## <span style="color:#008000">  Denoising is a soft projection on an adaptive basis  </span>
 (tangent plane of a blurred manifold)
 Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
 Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
