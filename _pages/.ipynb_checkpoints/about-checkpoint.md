@@ -24,7 +24,7 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue"> Learning and sampling from the density implicit in a denoiser </span>
+## <span style="color:#800000"> Learning and sampling from the density implicit in a denoiser </span>
 
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
 
@@ -92,7 +92,7 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue"> Learning normalized image density rather than the score </span>
+## <span style="color:#800000"> Learning normalized image density rather than the score </span>
 Can the embeded prior in a denoiser be made more explict by predicting the energy ($$-\log p$$) rather than the score ($$ \nabla \log p$$)? 
 
 There are two main problems to tackle to make this happen: 1) finding the right architecture and 2) normalizing the density. Neither of these problems exit for score models. Architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues and learn $$\log p$$ directly. 
@@ -146,7 +146,7 @@ why do we care about understanding? predict when generalization and when fails
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue">  Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) </span>
+## <span style="color:#667C26">  Denoising is a soft projection on an adaptive basis (tangent plane of a blurred manifold) </span>
 
 Classical denoisers: find a space where image is compact, shrink, go back. Examples: Fourier (would be perfect if the world was gaussian but it is not). Wavelet (prior is union of subspaces), markov random fields (GSM). 
 Of course there were models that did not rely on priors: tour of modern denoising - filtering, BM2D, non local means 
@@ -161,7 +161,7 @@ Both filtering and basis are noise level dependent. This can be formulated in a 
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:blue"> Conditional locality of image densities</span>
+## <span style="color:#667C26"> Conditional locality of image densities</span>
 Learning multi-scale local conditional probability models of images: conditional locality
 
    How do denoisers embed densities despite the curse of dimensionality?
@@ -175,7 +175,7 @@ Learning multi-scale local conditional probability models of images: conditional
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#457b9d"> Generalization in diffusion models</span>
+## <span style="color:#667C26"> Generalization in diffusion models</span>
 generalization paper:
   strong generalization
    GAHBs
@@ -183,13 +183,13 @@ generalization paper:
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#1d3557"> unsupervised representation learning via denoising</span>
+## <span style="color:#667C26"> unsupervised representation learning via denoising</span>
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
 
 
-##    <span style="color:#e63946"> Unbelievably vast range of natural image probabilities </span>
+## <span style="color:#667C26"> Unbelievably vast range of natural image probabilities </span>
 
 energy model: energy distribution of images    
 
