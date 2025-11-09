@@ -44,7 +44,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 
 
 <p align="center">
-  <img src="{{ '/images/manifold_diffusion.png' | relative_url }}" alt="Project schematic" width="70%">
+  <img src="{{ '/images/manifoldDiffusion.png' | relative_url }}" alt="Project schematic" width="70%">
 </p>
 <p align="center">
   Here is some text describing the project that wraps around the image.
