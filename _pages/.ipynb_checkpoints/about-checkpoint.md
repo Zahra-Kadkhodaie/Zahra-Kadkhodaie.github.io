@@ -110,7 +110,7 @@ $$
 In effect, minimizing this term ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/diffusing_barrier_decorated.png" alt="Project schematic" width="50%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/diffusing_barrier_decorated.png" alt="Project schematic" width="30%"><br>
       <span style="font-size: 0.80em; color: #555;">
   </span>
 </p>
