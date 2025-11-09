@@ -45,11 +45,11 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/manifoldDiffusion.png" alt="Project schematic" width="70%"><br>
 </p>
-*The above figure shows a two-dimensional simulation of the sampler. Example signals $$x$$ are sampled from a uniform prior on a manifold (green curve). First three panels show, for three different levels of noise, the noise-corrupted measurements of the signals (red points), the associated noisy signal distribution $$p(y)$$ (indicated with underlying grayscale intensities), and the least-squares optimal denoising solution $$\hat{x}(y)$$ for each (end of red line segments), as defined by Miyasawa/Tweedie equation. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel. Algorithm parameters were $$h_0 = 0.05$$ and $$\beta= 1$$ (i.e., no injected noise). Note that, unlike the single-step least-squares solutions, the iterative trajectories are curved, and always arrive at solutions on the signal manifold.*
+The above figure shows a two-dimensional simulation of the sampler. Example signals $$x$$ are sampled from a uniform prior on a manifold (green curve). First three panels show, for three different levels of noise, the noise-corrupted measurements of the signals (red points), the associated noisy signal distribution $$p(y)$$ (indicated with underlying grayscale intensities), and the least-squares optimal denoising solution $$\hat{x}(y)$$ for each (end of red line segments), as defined by Miyasawa/Tweedie equation. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel. Algorithm parameters were $$h_0 = 0.05$$ and $$\beta= 1$$ (i.e., no injected noise). Note that, unlike the single-step least-squares solutions, the iterative trajectories are curved, and always arrive at solutions on the signal manifold.*
 
 
 <p align="center">
-  <iframe width="20%" height="155"
+  <iframe width="100" height="50"
           src="https://www.youtube.com/embed/wfOq7kAc3Z8"
           title="YouTube video player"
           frameborder="0"
