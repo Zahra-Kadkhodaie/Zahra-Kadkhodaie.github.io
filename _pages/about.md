@@ -32,9 +32,11 @@ Before deep learning, one of the major approches to solve Gaussian denoising pro
 Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* 
 
 
-Remarkably, in the case of Gaussian denoising, the relationship between the denoising mapping and the prior is exact and explicit, thanks to a classical statistics result [Robin 1956, Miyasawa 1961, See [Raphan 2011](https://www.cns.nyu.edu/pub/eero/raphan10.pdf) for proof]: 
+Remarkably, in the case of Gaussian denoising, the relationship between the denoising mapping and the prior is exact and explicit, thanks to a classical statistics result [Robin 1956, Miyasawa 1961]: 
 
-$$ \hat{x}(y) = y + \sigma^2 \nabla_y \log p (y)$$.
+$$ \hat{x}(y) = y + \sigma^2 \nabla_y \log p (y)$$
+
+See [Raphan 2011](https://www.cns.nyu.edu/pub/eero/raphan10.pdf) for proof.
 
 A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes the score (gradient of the log probablity) of noisy images, $$y$$. When the DNN denoiser learns to solve the problem at all nosie levels, it could be used in an iterative **coarse-to-fine gradient ascent algorithm**  to sample from the density embedded in the denoiser. We introduced this algorithm in the paper below. Its core idea parallels to what later became known as **diffusion models**.  
 
@@ -43,16 +45,20 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 <img src="https://zahra-kadkhodaie.github.io/images/manifold_diffusion2.png" alt="Project schematic" width="90%"><br>
 </p>
   <span style="font-size: 0.80em; color: #555;">
-    A two-dimensional simulation of the sampler. Right panel shows trajectory of our iterative coarse-to-fine inverse algorithm, starting from the same initial values y (red points) of the first panel (without any injected noise). The iterative trajectories are curved, and always arrive at solutions on the signal manifold.
+    A two-dimensional simulation of the sampler. Right panel shows trajectory of our iterative coarse-to-fine sampling algorithm, starting from the same initial values y (red points) of the first panel. The trajectories are curved, and always arrive at solutions on the signal manifold.
   </span>
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/trajectory_mnist.png" alt="Project schematic" width="80%"><br>
-<img src="https://zahra-kadkhodaie.github.io/images/trajectory_patches.png" alt="Project schematic" width="60%"><br>
+<!-- <img src="https://zahra-kadkhodaie.github.io/images/trajectory_patches.png" alt="Project schematic" width="60%"><br> -->
 </p>
+  <span style="font-size: 0.80em; color: #555;">
+    Example sampling trajectory for a model trained on MNIST images.
+  </span>
 
+  
 <p align="center">
-  <iframe width="100" height="50"
+  <iframe width="20" height="10"
           src="https://www.youtube.com/embed/wfOq7kAc3Z8"
           title="YouTube video player"
           frameborder="100"
