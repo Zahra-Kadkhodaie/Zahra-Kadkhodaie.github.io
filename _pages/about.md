@@ -49,7 +49,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 
 
 <p align="center">
-  <iframe width="70%" height="155"
+  <iframe width="20%" height="155"
           src="https://www.youtube.com/embed/wfOq7kAc3Z8"
           title="YouTube video player"
           frameborder="0"
