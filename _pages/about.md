@@ -104,7 +104,7 @@ for this to be true, the score  model is required to be conservative and homogen
 Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation hold across time (noise levels). 
 
 $$
-\ell_{\rm TSM}(\theta,t) = \mathbb{E}_{x,y} \left\[{ \left( {\partial_t U_{\theta}(y,t) - \frac{d}{2t} + \frac{\Vert{y-x}\Vert^2} {2t^2}} \right)^2}\right\]
+\ell_{\rm TSM}(\theta,t) = \mathbb{E}_{x,y} \left({ \left[ {\partial_t U_{\theta}(y,t) - \frac{d}{2t} + \frac{\Vert{y-x}\Vert^2} {2t^2}} \right)^2}\right]
 $$
 
 In effect, minimizing this term ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
