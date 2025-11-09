@@ -81,7 +81,7 @@ Left: Noise level of the sample as a function of iteration in synthesis, shown f
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/beta_effect.png" alt="Project schematic" width="50%"><br>
       <span style="font-size: 0.80em; color: #555;">
-More noise during synthesis results in sampling higher probability images (right panel) by escaping smaller maxima of density. 
+More noise during synthesis results in higher probability images (right panel) by escaping smaller maxima (model trained on patches of grayscale images). 
   </span>
 </p>
 **Reference:** <br>
@@ -93,7 +93,7 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 <!-- ------------------------------------------------- -->
 
 ### <span style="color:blue"> Learning normalized image density rather than the score </span>
-Can we make the embeded prior in a denoiser even more explict by predicting the energy ($$- \log p$$) rather than the score ($$ \nabla \log p$$)? There are two main problems to tackle to make this transition: 1) finding the right architecture and second and 2) normalizing the density. Neither of these problems exit for score models: through a massive collective effort the architecures have been imporved and refined to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, thanks to the gradient, the normalizing factor (partition function) goes away resolving the problem automatically. In the paper below, we introduced two simple tricks to overcome these issues. 
+Can the embeded prior in a denoiser be made more explict by predicting the energy ($$-\log p$$) rather than the score ($$ \nabla \log p$$)? There are two main problems to tackle to make this happen: 1) finding the right architecture and second and 2) normalizing the density. Neither of these problems exit for score models: architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues. 
 
 First, we showed that we can re-purpose score model architetures for energy models, by setting the energy to be 
 
@@ -101,10 +101,10 @@ $$U_{\theta}(y, t) =  \frac{1}{2} \langle y , s_{\theta}(y,t) \rangle$$
 
 for this to be true, the score  model is required to be conservative and homogeneous.
 
-Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation holds across time (noise levels). 
+Second, to get the normalization right (up to a global constant), we add a regularization term to the loss function that gaurantees the diffusion equation hold across time (noise levels). 
 
 $$
-    \ell_{\rm TSM}(\theta,t) = \expect[x,y]{\paren{\partial_t \energy(y,t) - \frac{d}{2t} + \frac{\norm{y-x}^2}{2t^2}}^2} .
+    \ell_{\rm TSM}(\theta,t) = \mathbb{E}[x,y]{ \left( {\partial_t U(y,t) - \frac{d}{2t} + \frac{\Vert{y-x}\Vert^2} {2t^2}} \right)^2} .
 $$
 
 In effect, it ties together the normalization constants of indivisual $$p(y,t)$$ such that the normalization factor is not a function of time anymore. Since the diffused density models are tied together, after training, we can compute the normalization factor of $$p(y,t=0)$$ by analytcically computing it for $$p(y,t=\infty)$$ (Standard Gaussian) and transferring that to $$t=0$$. 
