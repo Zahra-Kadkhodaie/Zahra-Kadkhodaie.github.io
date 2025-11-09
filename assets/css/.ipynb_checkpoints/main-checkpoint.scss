@@ -42,19 +42,18 @@
     "vendor/font-awesome/brands"
 ;
 
-;
   
-/* --- Custom site-specific overrides and additions --- */
+// /* --- Custom site-specific overrides and additions --- */
 
-/* Smaller, centered figure captions */
-p img + em {
-  display: block;
-  text-align: center;
-  font-size: 0.80em;
-  color: #555;
-  margin-top: 0.3em;
-}
-
+// /* Smaller, centered figure captions */
+// p img + em {
+//   display: block;
+//   text-align: center;
+//   font-size: 0.80em;
+//   color: #555;
+//   margin-top: 0.3em;
+// }
+;
 /* --- Custom hyperlink colors --- */
 a, a:visited {
   color: #2a9d8f; /* soft green */
