@@ -43,21 +43,20 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/manifold_diffusion2.png" alt="Project schematic" width="90%"><br>
-</p>
   <span style="font-size: 0.80em; color: #555;">
     A two-dimensional simulation of the sampler. Right panel shows trajectory of our iterative coarse-to-fine sampling algorithm, starting from the same initial values y (red points) of the first panel. The trajectories are curved, and always arrive at solutions on the signal manifold.
   </span>
+</p>
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/trajectory_mnist.png" alt="Project schematic" width="80%"><br>
 <!-- <img src="https://zahra-kadkhodaie.github.io/images/trajectory_patches.png" alt="Project schematic" width="60%"><br> -->
-</p>
   <span style="font-size: 0.80em; color: #555;">
     Example sampling trajectory for a model trained on MNIST images.
   </span>
-
+</p>
   
-<p align="center">
+<!-- <p align="center">
   <iframe width="20" height="10"
           src="https://www.youtube.com/embed/wfOq7kAc3Z8"
           title="YouTube video player"
@@ -65,18 +64,26 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
   </iframe>
-</p>
+</p> -->
 
 
 A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. 
 
 Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
-<p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/beta_effect.png" alt="Project schematic" width="70%"><br>
-</p>
+
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/convergence.png" alt="Project schematic" width="70%"><br>
+<span style="font-size: 0.80em; color: #555;">
+Left: Noise level of the sample as a function of iteration in synthesis, shown for 3 levels of injected noise. More noise (smaller beta) results in more steps. Right: Adaptive algorithm results in varying number of steps for different samples. 
+</span>
+</p>
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/beta_effect.png" alt="Project schematic" width="70%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+More noise during synthesis results in sampling higher probability images (right panel) by escaping smaller maxima of density. 
+  </span>
 </p>
 **Reference:** <br>
 ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
