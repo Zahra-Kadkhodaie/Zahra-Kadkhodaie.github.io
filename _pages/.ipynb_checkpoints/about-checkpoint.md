@@ -161,8 +161,13 @@ Why should we try to understand them? Aside from the intrinsic satisfaction of f
 
 ##  <span style="color:#008000"> Generalization in diffusion models </span>
 
-generalization paper:
-  strong generalization
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/github_fig1.png" alt="Project schematic" width="50%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+          
+  </span>
+</p>
+
   
 <!-- ------------------------------------------------- -->
 
@@ -213,9 +218,9 @@ Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Ima
 We made the idea of soft projection in an adaptive basis more precise in the paper below. Investiagting the denoising mapping in the case of synthetic images where we know the optimal solution reveals that the adpative bases can be characterize with two classes of harmonics: one-dimensional oscilating patterns along the contours and two-dimensional oscillating patterns in the flat backgrounds. 
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/github_fig2.png" alt="Project schematic" width="50%">
-<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.pdf" alt="Project schematic" width="24%">
-<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_circles.pdf" alt="Project schematic" width="24%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/github_fig2.png" alt="Project schematic" width="90%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.png" alt="Project schematic" width="45%">
+<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_circles.png" alt="Project schematic" width="45%"><br>
       <span style="font-size: 0.80em; color: #555;">
   </span>
 </p>
