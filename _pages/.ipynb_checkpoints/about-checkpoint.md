@@ -251,7 +251,7 @@ ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geo
 ## <span style="color:#008000"> Conditional locality of image densities </span>
 We showed that diffusion models can overcome the **curse of dimensionality** and generalize beyond the training set. But how do they achieve this feat? What are the **inductive biases** that lead to learning the score? To understand this, we need to open the black box of the DNN denoisers to understand how it works. In the paper below, we took a step in this direction by studying a somewhat **simplified UNet architecture**. 
 
-How did we simplify the UNet without hurting its performace? We replaced its encoder path with a multi-scale wavelet transform (Haar filter more specfically). It is simply a linear orthogonal transform ($$W$$) which is implemented by only 4 convolutional filters: three of them extract the details,$$\bar{x_j}$$,  (vertical, horizontal, diagonal differences) and one holds on to the low-resolution coarser content (averaging). We apply the same 4 filters on the low-resolution image, and keep repeating it to create mutiple blocks. $$j$$ denotes depth of the scale ($$j=0$$ is the input level, and $$j=J$$ is the deepest scale - the bottom block). Using this representation gaurantees that different scales do not overlap, rendering the model more analyzable. 
+How did we modify the UNet without hurting its performace? We replaced its encoder path with a multi-scale wavelet transform (Haar filter more specfically). It is simply a linear orthogonal transform ($$W$$) which is implemented by only 4 convolutional filters: three of them extract the details,$$\bar{x_j}$$,  (vertical, horizontal, diagonal differences) and one holds on to the low-resolution coarser content (averaging). We apply the same 4 filters on the low-resolution image, and keep repeating it to create mutiple blocks. $$j$$ denotes depth of the scale ($$j=0$$ is the input level, and $$j=J$$ is the deepest scale - the bottom block). Using this representation gaurantees that different scales do not overlap, making the model more analyzable. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/wavelet_decom.png" alt="Project schematic" width="70%"><br>
@@ -261,7 +261,16 @@ How did we simplify the UNet without hurting its performace? We replaced its enc
 </p>
 
 
-We hypothesized that the UNet overcomes the curse of dimensionality by factorizing the density, $$p(x)$$, into a series of lower-dimensional conditional densities. 
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/UNet_upside.png" alt="Project schematic" width="70%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+    A simplified UNet (upside-down) with a linear encoder. The encoder is a multi-scale wavelet decomposition, which is a an invertable orthogonal transformation. 
+  </span>
+</p>
+
+
+We hypothesized that the UNet overcomes the curse of dimensionality by factorizing the density, $$p(x)$$, into a series of **lower-dimensional** conditional densities. How are the conditionals lower-dimensional? 
 
 $$
 p(x_0) = p(x_J) \Pi_{j=1}^J p(\bar{x}_j | x_j)
