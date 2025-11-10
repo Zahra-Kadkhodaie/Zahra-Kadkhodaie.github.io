@@ -279,9 +279,7 @@ How did we modify the UNet without hurting its performace? We replaced its encod
 
 We hypothesized that the UNet overcomes the curse of dimensionality by factorizing the density, $$p(x)$$, into a series of **lower-dimensional** conditional densities. It learns a density of the low-dimensional lowest resolution image, $$p(x_J)$$,which captures long range global dependencies. The location information is preserved thanks to the the zero-padding boundary handling that breaks translation equivariance. For the details it learns low-dimensional density of details conditioned on the coarser from the previous block. 
 
-$$
-p(x_0) = p(x_J, \bar{x_{J-1}},...., \bar{x_2}, \bar{x_1}) = p(x_J) \Pi_{j=1}^J p(\bar{x}_j | x_j)
-$$
+$$p(x_0) = p(x_J, \bar{x_{J-1}},...., \bar{x_2}, \bar{x_1}) = p(x_J) \Pi_{j=1}^J p(\bar{x}_j | x_j)$$
 
 But does it make sense to assume the conditional densities are low-dimensional?! The answer is yes! The reduction in dimensionality comes from the conditional-locality of the details density. In other words, $$p(\bar{x_j})$$ is not necessarily low-dimensional, but $$p(\bar{x_j}| x_j)$$ is: knowing the coarser structure in the image, we only need a small neighborhood around a pixel to denoise it. In other words, we are assuming a hierarchical markov property over the details values, and our experiments show that this assumption is aligned with true data structure. We tested this 
 
