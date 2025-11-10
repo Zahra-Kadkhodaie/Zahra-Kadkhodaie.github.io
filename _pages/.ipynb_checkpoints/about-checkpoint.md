@@ -279,10 +279,12 @@ How did we modify the UNet without hurting its performace? We replaced its encod
 
 We hypothesized that the UNet overcomes the curse of dimensionality by factorizing the density, $$p(x)$$, into a series of **lower-dimensional** conditional densities. It learns a density of the low-dimensional lowest resolution image, $$p(x_J)$$,which captures long range global dependencies. The location information is preserved thanks to the the zero-padding boundary handling that breaks translation equivariance. For the details it learns low-dimensional density of details conditioned on the coarser from the previous block. <br>
 
-$$p(x_0 ) = p(x_J, \bar{x}_{J-1},...., \bar{x_2}, \bar{x_1}) = p(x_J) \Pi_{j=1}^J p(\bar{x}_j | x_j)$$ <br>
+$$p(x_0 )  = p(x_J) \Pi_{j=1}^J p(\bar{x}_j | x_j)$$ <br>
 
-<!-- But does it make sense to assume the conditional densities are low-dimensional?! The answer is yes! **The reduction in dimensionality comes from the conditional-locality of the details density**. In other words, $$p(\bar{x}_j)$$ is not necessarily low-dimensional, but $$p(\bar{x}_j| x_j)$$ is: knowing the coarser structure in the image (e.g. blurred outline of a face), we only need a small neighborhood around a pixel to denoise it (or add details). In other words, we are assuming a hierarchical markov property over the details values, and our experiments show that this assumption is aligned with true data structure. We tested this hypothesis by making the Receptive Field (RF) of the decoder blocks as small as $$9 \times 9$$ for input images of size $$320 \times 320$$ and observed almost no reduction of performance! 
- -->
+<!-- = p(x_J, \bar{x}_{J-1},...., \bar{x_2}, \bar{x_1}) -->
+
+But does it make sense to assume the conditional densities are low-dimensional?! The answer is yes! **The reduction in dimensionality comes from the conditional-locality of the details density**. In other words, $$p(\bar{x}_j)$$ is not necessarily low-dimensional, but $$p(\bar{x}_j| x_j)$$ is: knowing the coarser structure in the image (e.g. blurred outline of a face), we only need a small neighborhood around a pixel to denoise it (or add details). In other words, we are assuming a hierarchical markov property over the details values, and our experiments show that this assumption is aligned with true data structure. We tested this hypothesis by making the Receptive Field (RF) of the decoder blocks as small as $$9 \times 9$$ for input images of size $$320 \times 320$$ and observed almost no reduction of performance! 
+
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/local-cond.png" alt="Project schematic" width="40%"><br>
       <span style="font-size: 0.80em; color: #555;">
