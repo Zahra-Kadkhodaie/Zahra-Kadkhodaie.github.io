@@ -160,15 +160,19 @@ Why should we try to understand them? Aside from the intrinsic satisfaction of f
 <!-- ------------------------------------------------- -->
 
 ##  <span style="color:#008000"> Generalization in diffusion models </span>
+A "good" density model learned from data, does not merely memorize the training set (i.e. the empirical density) but generalizes beyond that. In the paper below, we showed that denoisers used in diffusion models enter a strong generalization phase with finite data. Convolutional neural net denoisers **memorize** the training set of very small size. With larger training set, they enter a **transition phase** in which they either memorize and combine patches of the training exmaples, or return low quality samples. Eventually, the enter a **generalization regime** in which the two models generate almost the same images if initialize at the same sample (and match the injected iteration noise). This shows that the learned mapping across noise levels becomes independent from the individual images in the training set. In other words, **model variance tends to zero**. 
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/github_fig1.png" alt="Project schematic" width="50%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/transition_mem_gen.png" alt="Project schematic" width="95%"><br>
       <span style="font-size: 0.80em; color: #555;">
           
   </span>
 </p>
 
-  
+**Refrence** <br>
+ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geometry-adaptive harmonic representations. ICLR, 2024 (Best paper award & oral). <br>
+[PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
+
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000">  Denoising is a soft projection on an adaptive basis  </span>
