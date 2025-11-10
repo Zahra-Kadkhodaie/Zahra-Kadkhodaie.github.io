@@ -130,7 +130,7 @@ A good energy model assigns low energy to in-distribution images. We test this o
   </span>
 </p>
 
-A nice consequence of having direct access to $$\log p(x)$$ is that we can now explore image probabilies and study how they relate to image structrues. The first surprising (even shocking!) observation is **the unbelievably vast range of natural image probabilities**. Unlike the common assumption about image distributions, images vary in their probability by a factor of $$10^{14,000}$$ (no concentration!). This implies that **rare events in the space of images are not so rare** when you think about probabilty mass: the volume of the level sets of log probabilties has to be proportional to the inverse of $\log p(x)$. There are many more low probability images than high probability ones.  
+A nice consequence of having direct access to $$\log p(x)$$ is that we can now explore image probabilies and study how they relate to image structrues. A surprising (even shocking!) observation is **the unbelievably vast range of natural image probabilities**. Unlike the common assumption about image distributions, images vary in their probability by a factor of $$10^{14,000}$$ (no concentration!). This implies that **rare events in the space of images are not so rare** when you think about probabilty mass: the volume of the level sets of log probabilties has to be proportional to the inverse of $\log p(x)$. There are many more low probability images than high probability ones.  
 
 Additionally, there is a **perceptual component** strongly tied to the probablity of an image: high probablity images contain more flat regions while low probability images contain lots of details and smaller features which makes them less denoisable. 
 
@@ -160,7 +160,7 @@ Why should we try to understand them? Aside from the intrinsic satisfaction of f
 <!-- ------------------------------------------------- -->
 
 ##  <span style="color:#008000"> Generalization in diffusion models </span>
-A "good" density model learned from data, does not merely memorize the training set (i.e. the empirical density) but generalizes beyond that. In the paper below, we showed that denoisers used in diffusion models enter a strong generalization phase with finite data. Convolutional neural net denoisers **memorize** the training set of very small size. With larger training set, they enter a **transition phase** in which they either memorize and combine patches of the training exmaples, or return low quality samples. Eventually, the enter a **generalization regime** in which the two models generate almost the same images if initialize at the same sample (and match the injected iteration noise). This shows that the learned mapping across noise levels becomes independent from the individual images in the training set. In other words, **model variance tends to zero**. 
+A "good" density model learned from data, does not merely memorize the training set (i.e. the empirical density) but generalizes beyond that. In the paper below, we showed that denoisers used in diffusion models enter a strong generalization phase with finite data, despite the curse of dimensionality. Convolutional neural net denoisers **memorize** the training set of very small size. With larger training set, they enter a **transition phase** in which they either memorize and combine patches of the training exmaples, or return low quality samples. Eventually, the enter a **generalization regime** in which the two models generate almost the same images if initialize at the same sample (and match the injected iteration noise). This shows that the learned mapping across noise levels becomes independent from the individual images in the training set. In other words, **model variance tends to zero**. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/transition_mem_gen.png" alt="Project schematic" width="95%"><br>
@@ -193,7 +193,7 @@ $$
   </span>
 </p>
 
-Dimensionality of the subspace depends on the noise level on the input image. At higher noise levels, fewer signal dimensions can survive the noise. Empirically, dimensionality drops differently for different images, but on average it drops proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
+Dimensionality of the subspace is also adaptive and depends on the noise level on the input image. At higher noise levels, fewer signal dimensions can survive the noise. Empirically, dimensionality drops differently for different images, but on average it drops proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/effective_dim.png" alt="Project schematic" width="45%"><br>
@@ -236,7 +236,7 @@ We made the idea of soft projection in an adaptive basis more precise in the pap
 </p>
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.png" alt="Project schematic" width="60%">
+<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.png" alt="Project schematic" width="60%"><br>
       <span style="font-size: 0.80em; color: #555;">
           Top eigen vectors of of the Jacobian obtained from a model trained on synthetic images (C-alpha), evaluated at a noisy image. 
   </span>
@@ -247,7 +247,10 @@ We made the idea of soft projection in an adaptive basis more precise in the pap
 ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geometry-adaptive harmonic representations. ICLR, 2024 (Best paper award & oral). <br>
  [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
 
-## Conditional locality of image densities
+## <span style="color:#008000"> Conditional locality of image densities </span>
+
+openning the black box. We first try to understand UNet by simplifying some aspects. How do they learn despite the curse of dimesnionality? What are the inductive biases that help? We know they do generalize, and also they are limited to a particular class of bases (GAHBs). 
+
 Learning multi-scale local conditional probability models of images: conditional locality
 
    How do denoisers embed densities despite the curse of dimensionality?
@@ -261,7 +264,8 @@ Learning multi-scale local conditional probability models of images: conditional
 
 <!-- ------------------------------------------------- -->
 
-## unsupervised representation learning via denoising
+## <span style="color:#008000"> unsupervised representation learning via denoising </span>
+Understanding at a more mechanistcis level 
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
@@ -277,23 +281,26 @@ representation
 
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
 
-## Linear inverse problems 
+## Linear inverse problems: 
 <!-- ------------------------------------------------- -->
 
-## Solving inverse problem(click to expand)
+## <span style="color:#A52A2A"> Stochastic solutions to linear inverse problems using diffusion models </span>
 <!-- ------------------------------------------------- -->
 
-## optimal measurement (click to expand)
-<!-- ------------------------------------------------- -->
-
-
-##  cone excitation (click to expand)
+## <span style="color:#A52A2A"> Learning optimal linear measurement for a prior embeded in a denoiser </span>
 <!-- ------------------------------------------------- -->
 
 
-## non-linear inverse problems
-- feature- guided 
-- texture model 
+## <span style="color:#A52A2A">  cone excitation</span>
+<!-- ------------------------------------------------- -->
+
+
+## non-linear inverse problems:
+
+## <span style="color:#A52A2A">  feature guided? </span>
+
+## <span style="color:#A52A2A">  Guided sampling from a texture model </span>
+ 
 
 
 
