@@ -223,9 +223,22 @@ We made the idea of soft projection in an adaptive basis more precise in the pap
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/github_fig2.png" alt="Project schematic" width="90%"><br>
-<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.png" alt="Project schematic" width="45%">
-<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_circles.png" alt="Project schematic" width="45%"><br>
       <span style="font-size: 0.80em; color: #555;">
+          Fast decay of eigen values, and top eigen vectors obtained from the Jacobian of a model trained on CelebA dataset, evaluated at the shown noisy image. 
+  </span>
+</p>
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_circles.png" alt="Project schematic" width="50%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+          Top eigen vectors of of the Jacobian obtained from a model trained on disc images, evaluated at a slightly noisy disc image. The top eigen vectors span the tangent plane of the 5-dimensional synthesis image manifold, evaluated at one noisy image. 
+  </span>
+</p>
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.png" alt="Project schematic" width="60%">
+      <span style="font-size: 0.80em; color: #555;">
+          Top eigen vectors of of the Jacobian obtained from a model trained on synthetic images (C-alpha), evaluated at a noisy image. 
   </span>
 </p>
 
