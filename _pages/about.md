@@ -130,7 +130,7 @@ A good energy model assigns low energy to in-distribution images. We test this o
   </span>
 </p>
 
-A nice consequence of having direct access to $\log p(x)$ is that we can now explore image probabilies and study how they relate to image structrues. The first surprising (even shocking!) observation is **the unbelievably vast range of natural image probabilities**. Unlike the common assumption about image distributions, images vary in their probability by a factor of $$10^{14,000}$$ (no concentration!). This implies that rare events in the space of images are not so rare when you think about probabilty mass: level sets of low probabilty images has to compensate for a low probability with the inverse of its volume. There are many more low probability images that high probability ones.  
+A nice consequence of having direct access to $$\log p(x)$$ is that we can now explore image probabilies and study how they relate to image structrues. The first surprising (even shocking!) observation is **the unbelievably vast range of natural image probabilities**. Unlike the common assumption about image distributions, images vary in their probability by a factor of $$10^{14,000}$$ (no concentration!). This implies that **rare events in the space of images are not so rare** when you think about probabilty mass: the volume of the level sets of log probabilties has to be proportional to the inverse of $\log p(x)$. There are many more low probability images than high probability ones.  
 
 Additionally, there is a **perceptual component** strongly tied to the probablity of an image: high probablity images contain more flat regions while low probability images contain lots of details and smaller features which makes them less denoisable. 
 
@@ -159,7 +159,8 @@ Why should we try to understand them? Aside from the intrinsic satisfaction of f
 
 <!-- ------------------------------------------------- -->
 
-## Generalization in diffusion models
+##  <span style="color:#008000"> Generalization in diffusion models </span>
+
 generalization paper:
   strong generalization
   
@@ -208,7 +209,21 @@ Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Ima
 
 <!-- ------------------------------------------------- -->
 
-## GAHBs
+##  <span style="color:#008000"> DNN denoisers learn Geometry-adaptive harmonic basis </span>
+We made the idea of soft projection in an adaptive basis more precise in the paper below. Investiagting the denoising mapping in the case of synthetic images where we know the optimal solution reveals that the adpative bases can be characterize with two classes of harmonics: one-dimensional oscilating patterns along the contours and two-dimensional oscillating patterns in the flat backgrounds. 
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/github_fig2.png" alt="Project schematic" width="50%">
+<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.pdf" alt="Project schematic" width="24%">
+<img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_circles.pdf" alt="Project schematic" width="24%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+  </span>
+</p>
+
+
+**Refrence** <br>
+ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geometry-adaptive harmonic representations. ICLR, 2024 (Best paper award & oral). <br>
+ [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
 
 ## Conditional locality of image densities
 Learning multi-scale local conditional probability models of images: conditional locality
