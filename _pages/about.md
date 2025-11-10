@@ -68,7 +68,7 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 </p> -->
 
 
-A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive** noise schedule during sampling, where the step size depends on the noise amplitute estimated by the model. 
+A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive noise schedule during sampling**, where the step size depends on the noise amplitute estimated by the model. 
 Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
 
 
@@ -160,7 +160,7 @@ Why should we try to understand them? Aside from the intrinsic satisfaction of f
 <!-- ------------------------------------------------- -->
 
 ##  <span style="color:#008000"> Generalization in diffusion models </span>
-A "good" density model learned from data, does not merely memorize the training set (i.e. the empirical density) but generalizes beyond that. In the paper below, we showed that denoisers used in diffusion models enter a strong generalization phase with finite data, despite the curse of dimensionality. Convolutional neural net denoisers **memorize** the training set of very small size. With larger training set, they enter a **transition phase** in which they either memorize and combine patches of the training exmaples, or return low quality samples. Eventually, the enter a **generalization regime** in which the two models generate almost the same images if initialize at the same sample (and match the injected iteration noise). This shows that the learned mapping across noise levels becomes independent from the individual images in the training set. In other words, **model variance tends to zero**. 
+A "good" density model learned from data, does not merely memorize the training set (i.e. the empirical density) but generalizes beyond that. In the paper below, we showed that denoisers used in diffusion models enter a strong generalization phase with finite data, despite *the curse of dimensionality*. Convolutional neural net denoisers **memorize** the training set of very small size. With larger training set, they enter a **transition phase** in which they either memorize and combine patches of the training exmaples, or return low quality samples. Eventually, they enter a **generalization regime** in which the two models generate almost the same images if initialize at the same sample (and match the injected iteration noise). This shows that the learned mapping across noise levels becomes independent from the individual images in the training set. In other words, **model variance tends to zero**. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/transition_mem_gen.png" alt="Project schematic" width="95%"><br>
@@ -218,50 +218,66 @@ Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Ima
 
 <!-- ------------------------------------------------- -->
 
-##  <span style="color:#008000"> DNN denoisers learn Geometry-adaptive harmonic bases </span>
+##  <span style="color:#008000"> DNN denoisers learn Geometry-adaptive harmonic bases (GAHB) </span>
 We made the idea of soft projection in an adaptive basis more precise in the paper below. Investiagting the denoising mapping in the case of synthetic images where we know the optimal solution reveals that the adpative bases can be characterize with two classes of harmonics: one-dimensional oscilating patterns along the contours and two-dimensional oscillating patterns in the flat backgrounds. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/github_fig2.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">
-          Fast decay of eigen values, and top eigen vectors obtained from the Jacobian of a model trained on CelebA dataset, evaluated at the shown noisy image. 
+          Fast decay of eigen values, and top eigen vectors obtained from the Jacobian of a model trained on CelebA dataset, evaluated at the shown noisy image. We observe 1-D and 2-D oscillating patterns with increasing frequency as a function of eigen value. 
   </span>
 </p>
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_circles.png" alt="Project schematic" width="50%"><br>
       <span style="font-size: 0.80em; color: #555;">
-          Top eigen vectors of of the Jacobian obtained from a model trained on disc images, evaluated at a slightly noisy disc image. The top eigen vectors span the tangent plane of the 5-dimensional synthesis image manifold, evaluated at one noisy image. 
+          Top eigen vectors of of the Jacobian obtained from a model trained on disc images, evaluated at a slightly noisy disc image. The top eigen vectors span the tangent plane of the 5-dimensional synthesis image manifold, evaluated at one noisy image. The next five eigen values are not zero, which results in a sub-optiml denoising MSE. The network fails to lean the optimal solution due to its preference for GAHBs. 
   </span>
 </p>
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/eigenvectors_blurred_sig_100.png" alt="Project schematic" width="60%"><br>
       <span style="font-size: 0.80em; color: #555;">
-          Top eigen vectors of of the Jacobian obtained from a model trained on synthetic images (C-alpha), evaluated at a noisy image. 
+          Top eigen vectors of of the Jacobian obtained from a model trained on synthetic images (C-alpha), evaluated at a noisy image. For this class of images, the optimal densoising is obtain within a GAHBs basis. The model learns the optimal solution (see paper for results). 
   </span>
 </p>
 
+From a mechanistic perspective, the harmanics arise from the convolutional layers. However, these harmonics are way more sophisticated than their precedator, the Fourier basis (weiner filter), due to the non-linearities of the network. Understanding the exact relationship between the GAHBs and the cascade of operations in the network remains to be understood. 
 
 **Refrence** <br>
 ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geometry-adaptive harmonic representations. ICLR, 2024 (Best paper award & oral). <br>
  [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
 
 ## <span style="color:#008000"> Conditional locality of image densities </span>
+We showed that diffusion models overcome the **curse of dimensionality** and generalize beyond the training set. But how do they achieve this feat? What are the **inductive biases** that lead to learning the score? To understand this, we need to open the black box of the DNN denoisers to understand how it works. In the paper below, we took a step in this direction by studying a somewhat **simplified UNet architecture**. 
 
-openning the black box. We first try to understand UNet by simplifying some aspects. How do they learn despite the curse of dimesnionality? What are the inductive biases that help? We know they do generalize, and also they are limited to a particular class of bases (GAHBs). 
+How did we simplify the UNet without hurting its performace? We replaced its encoder path with a multi-scale wavelet transform (Haar filter more specfically). It is simply a linear orthogonal transform ($$W$$) which is implemented by only 4 convolutional filters: three of them extract the details (vertical, horizontal, diagonal differences) and one holds on to the low-resolution coarser content (averaging). 
+
+The simplification is that we made the encoder blocks of the UNet linear by substituting them with a multi-scale wavelet transform (Haar filter more specfically). This gaurantees that different scales do not overlap, rendering the model more analyzable. 
+
+We hypothesized that the UNet overcomes the curse of dimensionality by factorizing the density, $$p(x)$$, into a series of lower-dimensional conditional densities. 
+
+$$
+p(x_0) = p(x_J) \Pi_{j=1}^J p(\hat{x}_j | x_j)
+$$
+
+Where $$j$$ denotes depth of the scale ($$j=0$$ is the input level, and $$j=J$$ is the deepest scale - the bottom block).  
+ 
+ But what are the particular image statisctis/structures that help UNet defeit the curse? Here we form a hypothesis that one way they reduce dimensionality is by factorzing the density into a series of low-dimensinoal conditionals. the Low dimensinoality arises from conditional locality, which we tested in this paper. 
+
+Building on markov random field models of image density, we assumed locality. In the past, t
 
 Learning multi-scale local conditional probability models of images: conditional locality
 
-   How do denoisers embed densities despite the curse of dimensionality?
-   Factorizing to lower dimensional densities. (old trick, markov random fields)
-   first learn global coarse stuff (big features). Don't need all the details -> down sample. zero padding -> breaking translation invariance.
-   then you can model details with local density models, conditioned on gloval stuff.
-   give an example: if you have a blurred outline of the face and locations of the details, then you can refine it
-   How small can you make the RF or neighborhood in the MRF model? We showed you can go pretty small.
-   Does this hold in more complex cases? Linear encoding can only takes us so far, 
+Factorizing to lower dimensional densities. (old trick, markov random fields)
+first learn global coarse stuff (big features). Don't need all the details -> down sample. zero padding -> breaking translation invariance.
+then you can model details with local density models, conditioned on gloval stuff.
+give an example: if you have a blurred outline of the face and locations of the details, then you can refine it
+How small can you make the RF or neighborhood in the MRF model? We showed you can go pretty small.
+Does this hold in more complex cases? Linear encoding can only takes us so far, 
 
-
+ZK, Guth, Mallat, Simoncelli, Learning multi-scale local conditional probability models of images. ICLR, 2023 (Oral). <br>
+  [PDF](https://openreview.net/pdf?id=VZX2I_VVJKH) | [Project page](https://github.com/LabForComputationalVision/local-probability-models-of-images)
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000"> Unsupervised representation learning via denoising </span>
@@ -269,6 +285,10 @@ Understanding at a more mechanistcis level
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
+
+**Reference:**
+ZK, Mallat, Simoncelli, Unconditional CNN denoiser contain sparse semantic representations of images. arXiv, 2025.<br>
+ [PDF](https://arxiv.org/pdf/2506.01912)
 
 
 <!-- ------------------------------------------------- -->
@@ -286,18 +306,23 @@ Ultimately, we want to learn the density to use it! Inverse problems in signal p
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000"> Learning optimal linear measurements for a prior embeded in a denoiser </span>
+
+
+Zhang, ZK, Simoncelli, Brainard, Generalized Compressed Sensing for Image Reconstruction with Diffusion Probabilistic Models. TMLR, 2025 (J2C ICLR2026)
+ [PDF](https://openreview.net/pdf?id=lmHh4FmPWZ) | [Project page](https://github.com/lingqiz/optimal-measurement)
+ 
 <!-- ------------------------------------------------- -->
 
 
-## <span style="color:#008000">  cone excitation</span>
+<!-- ## <span style="color:#008000">  cone excitation</span> -->
 <!-- ------------------------------------------------- -->
 
 
 ## non-linear inverse problems:
 
-## <span style="color:#008000">  feature guided? </span>
+<!-- ## <span style="color:#008000">  feature guided? </span> -->
 
-## <span style="color:#008000">  Guided sampling from a texture model </span>
+## <span style="color:#008000">  Guided sampling from a texture density model </span>
  
 
 
