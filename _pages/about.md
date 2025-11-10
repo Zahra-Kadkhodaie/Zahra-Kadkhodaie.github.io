@@ -20,7 +20,7 @@ I enjoy studying these complementary perspectives and seeing how they inform one
  
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-#  <span style="color:#A52A2A"> Learning image density models from data </span>
+#  <span style="color:#A52A2A"> Learning Image Density Models from Data </span>
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
@@ -136,31 +136,55 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# <span style="color:#A52A2A"> Understanding and Evaluating learned density models </span>
+# <span style="color:#A52A2A"> Understanding and Evaluating Learned Density Models </span>
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-Deep neural networks are many times more capable than their classical predecessors. They have grown increasingly complex and deep, while our understanding of them has remained comparatively shallow.
-Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for evaluating these learned models. In the context of density learning, assessing how “good” a model really is depends on two questions: 1) *How well does it generalize?* 2) *How accurately does it approximate the true density?* Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do. I approach these questions through **scientific experimentation**: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
+<!--  -->
+Deep neural networks have grown increasingly complex and deep, while our understanding of them remains comparatively shallow.
+Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for **evaluating** these learned models. In the context of density learning, assessing how “good” a model really is depends on two questions: 1) *How well does it generalize?* 2) *How accurately does it approximate the true density?* Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do. I approach these questions through **scientific experimentation**: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
 
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000">  Denoising is a soft projection on an adaptive basis  </span>
-Many of the pre-deep net denoisers can be summarized into three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function to suppress noise, 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the  transformed sapce shoud be as sparse and compact as possible. 
+Classical denoising heavily relied on designing transformations in which the image representation was sparse.
+Many of these denoisers worked in three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function to suppress the noise, and 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the transformed space shoud be as sparse and compact as possible. But, due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), so failed to fully harvest the intrinsic low-dimensionality of images. Deep neural network denoisers are many times more capable than their classical predecessors. But how do they work? What is the transformation they learn from data?  
 
-Due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), hence not able to capture the intrinsic low-dimensionality of images. 
+To analyze and understand how deep net denoisers work we drew on the insight from the classical literature. In the paper below, we showed that locally-linear DNN denosiers can also be described as soft projection (shrinkage) in a sparse basis. What makes them so powerful is that the basis is adaptive to the underlying image, thanks to the nonlinearities of the mapping. The adaptive basis can be exposed by Singular Value Decompotion (SVD) of the Jacobian ($$A_y$$) of the denoising mapping w.r.t. the noisy input
+
+$$
+\hat{x}(y) = A_y y = USV^T y = \Sigma_{i =1} ^N s_i (V_i^T y) U_i . 
+$$
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/svd_1.png" alt="Project schematic" width="45%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/top_sing_vect.png" alt="Project schematic" width="45%"><br>    
+      <span style="font-size: 0.80em; color: #555;">
+          Left: Fast decay of singular values shows that the adaptive basis is very sparse for the input image. The histogram shows that the Jacobian is almost symmetric. So, the network implements a soft projection onto a basis adaptive to the input. Right: Top singular vectores capture image features which will be preserved and bottom singular vectors are noise which will be supressed. Top singular vectors span the signal subspace which can be interpreted as the tangent plane to the (blurred) image manifold at clean image point.
+  </span>
+</p>
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/effective_dim.png" alt="Project schematic" width="45%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+          Dimensionality of the subspace depends on the noise level on the input image. At higher noise levels, more dimensions fewer signal dimensions can survive the noise. Empirically, dimensionality drops on avergae proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
+  </span>
+</p>
 
 In the Bayesian tradition of image processing, 
 
-with deep net denoiser: they solve the denoisng problem by non-linear regression (like every other problem).  How do they work? What is the transformed space they operate in? 
 
-We made one change to make the network more analyzable: removing addetive constant (call bais in pytorch implementation) from the model to make it locally linear. Now we can use linear algebra! 
+
 Jacobian: symmetric 
 intrepret rows: filtering: old lit. point is the increasing size of weighted averging. Model figures out the noise size (size of neighborhood) and is adaptive to the content 
 interpret columns: basis in which a noisy image is being denoised 
 (tangent plane of a blurred manifold)
 
 Both filtering and basis are noise level dependent. This can be formulated in a noise-dependent effective dimesionality 
-
+ 
+**Reference:**  <br>
+Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks. ICLR, 2020. <br>
+  [PDF](https://openreview.net/pdf?id=HJlSmC4FPS) | [Project page](https://labforcomputationalvision.github.io/bias_free_denoising/) | [Code](https://github.com/LabForComputationalVision/bias_free_denoising) <br>
+<sub>\* denotes equal contribution</sub>
 
 <!-- ------------------------------------------------- -->
 
@@ -199,7 +223,7 @@ energy model: energy distribution of images
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# <span style="color:#A52A2A"> Utilizing learned density models to solve inverse problems </span>
+# <span style="color:#A52A2A"> Utilizing Learned Density Models to Solve Inverse Problems </span>
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
