@@ -129,7 +129,21 @@ A good energy model assigns low energy to in-distribution images. We test this o
       <span style="font-size: 0.80em; color: #555;">
   </span>
 </p>
- 
+
+A nice consequence of having direct access to $\log p(x)$ is that we can now explore image probabilies and study how they relate to image structrues. The first surprising (even shocking!) observation is **the unbelievably vast range of natural image probabilities**. Unlike the common assumption about image distributions, images vary in their probability by a factor of $$10^{14,000}$$ (no concentration!). This implies that rare events in the space of images are not so rare when you think about probabilty mass: level sets of low probabilty images has to compensate for a low probability with the inverse of its volume. There are many more low probability images that high probability ones.  
+
+Additionally, there is a **perceptual component** strongly tied to the probablity of an image: high probablity images contain more flat regions while low probability images contain lots of details and smaller features which makes them less denoisable. 
+
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/gumble.png" alt="Project schematic" width="90%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+          Histogram of log probabilities of images in the ImageNet dataset. Color-coded arrows
+indicate values for the example images on the right. 
+  </span>
+</p>   
+
+
 **Reference:**  <br>
 Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
 
@@ -141,13 +155,19 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 <!-- ------------------------------------------------- -->
 <!--  -->
 Deep neural networks have grown increasingly complex and deep, while our understanding of them remains comparatively shallow.
-Why should we try to understand them? Beyond the intrinsic satisfaction of figuring things out, a deeper understanding is essential for **evaluating** these learned models. In the context of density learning, assessing how “good” a model really is depends on two questions: 1) *How well does it generalize?* 2) *How accurately does it approximate the true density?* Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do. I approach these questions through **scientific experimentation**: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
+Why should we try to understand them? Aside from the intrinsic satisfaction of figuring things out, a deeper understanding is essential for **evaluating** these learned models. In the context of density learning, assessing how “good” a model really begs two questions: 1) *How well does it generalize?* 2) *How accurately does it approximate the true density?* Answering these requires knowing where and how such models fail—insight that, in turn, comes from studying why they succeed where they do. I approach these questions through **scientific experimentation**: explore the data, form hypotheses, and test them under controlled conditions. I believe this mindset suits modern models well. After all, they have evolved through an accelerated process of “natural selection”—only the most effective architectures have survived—making today’s networks far too complex to be fully understood through a purely reductionist, bottom-up theoretical approach. 
 
 <!-- ------------------------------------------------- -->
 
+## Generalization in diffusion models
+generalization paper:
+  strong generalization
+  
+<!-- ------------------------------------------------- -->
+
 ## <span style="color:#008000">  Denoising is a soft projection on an adaptive basis  </span>
-Classical denoising heavily relied on designing transformations in which the image representation was sparse.
-Many of these denoisers worked in three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function to suppress the noise, and 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the transformed space shoud be as sparse and compact as possible. But, due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), so failed to fully harvest the intrinsic low-dimensionality of images. Deep neural network denoisers are many times more capable than their classical predecessors. But how do they work? What is the transformation they learn from data?  
+Classical denoising heavily relied on designing transformations in which the image representation was **sparse**.
+Many of these denoisers worked in three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function (**soft projection**) to suppress the noise, and 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the transformed space shoud be as sparse and compact as possible. But, due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), so failed to fully harvest the intrinsic low-dimensionality of images. Deep neural network denoisers are many times more capable than their classical predecessors. But how do they work? *What is the transformation they learn from data?*  
 
 To analyze and understand how deep net denoisers work we drew on the insight from the classical literature. In the paper below, we showed that locally-linear DNN denosiers can be described as soft projection (shrinkage) in a sparse basis. What makes them so powerful is that the basis is adaptive to the underlying image, thanks to the nonlinearities of the mapping. The adaptive basis can be exposed by Singular Value Decompotion (SVD) of the Jacobian ($$A_y$$) of the denoising mapping w.r.t. the noisy input. The top singular vectors span the **signal subpace** which can be interpreted as the **tangent plane to the (blurred) image manifold at clean image point**.
 
@@ -163,7 +183,7 @@ $$
   </span>
 </p>
 
-Dimensionality of the subspace depends on the noise level on the input image. At higher noise levels, more dimensions fewer signal dimensions can survive the noise. Empirically, dimensionality drops on avergae proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
+Dimensionality of the subspace depends on the noise level on the input image. At higher noise levels, fewer signal dimensions can survive the noise. Empirically, dimensionality drops differently for different images, but on average it drops proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/effective_dim.png" alt="Project schematic" width="45%"><br>
@@ -171,7 +191,7 @@ Dimensionality of the subspace depends on the noise level on the input image. At
   </span>
 </p>
 
-In addition to analysizing the column space of the Jacobian, we also analyzed its row space. Interestingly, we could interpet the DNN denoising mapping as an adaptive filtering procedure in pixel domain, which ties it to another type of denoiser deign in classical signal processing literture (see [this review paper](https://users.soe.ucsc.edu/~milanfar/publications/journal/ModernTour.pdf)). Here, a pixel is estimated by a weighted average of neighboring pixel. The neighborhood is daptive to both the noise level and the underlying image structure. 
+In addition to analysizing the column space of the Jacobian, we also analyzed its row space. Interestingly, we could interpet the DNN denoising mapping as an **adaptive filtering procedure in pixel domain**, which ties it to another way of formulating denoising in classical signal processing literture (see [this review paper](https://users.soe.ucsc.edu/~milanfar/publications/journal/ModernTour.pdf)). Here, a pixel is estimated by a weighted average of neighboring pixel. The **neighborhood weights** are daptive to both the noise level and the underlying image structure. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/filtering.png" alt="Project schematic" width="80%"><br>
@@ -188,6 +208,8 @@ Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Ima
 
 <!-- ------------------------------------------------- -->
 
+## GAHBs
+
 ## Conditional locality of image densities
 Learning multi-scale local conditional probability models of images: conditional locality
 
@@ -202,23 +224,12 @@ Learning multi-scale local conditional probability models of images: conditional
 
 <!-- ------------------------------------------------- -->
 
-## Generalization in diffusion models
-generalization paper:
-  strong generalization
-   GAHBs
-
-
-<!-- ------------------------------------------------- -->
-
 ## unsupervised representation learning via denoising
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
 
 
-## Unbelievably vast range of natural image probabilities 
-
-energy model: energy distribution of images    
 
 
 <!-- ------------------------------------------------- -->
