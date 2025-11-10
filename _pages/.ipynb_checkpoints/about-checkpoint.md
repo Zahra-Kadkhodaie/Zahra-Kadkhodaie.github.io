@@ -281,7 +281,7 @@ We hypothesized that the UNet overcomes the curse of dimensionality by factorizi
 
 $$p(x_0) = p(x_J, \bar{x_{J-1}},...., \bar{x_2}, \bar{x_1}) = p(x_J) \Pi_{j=1}^J p(\bar{x}_j | x_j)$$
 
-But does it make sense to assume the conditional densities are low-dimensional?! The answer is yes! The reduction in dimensionality comes from the conditional-locality of the details density. In other words, $$p(\bar{x_j})$$ is not necessarily low-dimensional, but $$p(\bar{x_j}| x_j)$$ is: knowing the coarser structure in the image, we only need a small neighborhood around a pixel to denoise it. In other words, we are assuming a hierarchical markov property over the details values, and our experiments show that this assumption is aligned with true data structure. We tested this 
+But does it make sense to assume the conditional densities are low-dimensional?! The answer is yes! **The reduction in dimensionality comes from the conditional-locality of the details density**. In other words, $$p(\bar{x_j})$$ is not necessarily low-dimensional, but $$p(\bar{x_j}| x_j)$$ is: knowing the coarser structure in the image (e.g. blurred outline of a face), we only need a small neighborhood around a pixel to denoise it (or add details). In other words, we are assuming a hierarchical markov property over the details values, and our experiments show that this assumption is aligned with true data structure. We tested this hypothesis by making the Receptive Field (RF) of the decoder blocks as small as $$9 \times 9$$ for input images of size $$320 \times 320$$ and observed almost no reduction of performance! 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/local-cond.png" alt="Project schematic" width="40%"><br>
@@ -290,28 +290,25 @@ But does it make sense to assume the conditional densities are low-dimensional?!
   </span>
 </p>
 
-hypothesis by making the Receptive Field (RF) of the decoder blocks as small as $$9 \times 9$$ for input images of size $$320 \times 320$$ and observed almost no reduction of performance. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/MS_comparisons.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">
-    A simplified UNet (upside-down) with a linear encoder path. The encoder consists of a multi-scale wavelet decomposition. 
+    
   </span>
 </p>
 
-This model can be used to generate images, like a UNet. For comparisons, we show a sample generated from a model without coarse-to-fine conditioning with comparable number of parameters. These results show that we can reduce the number of parameters drastically if the architecture leverges structure in the image correctly. 
+
+This model can be used to generate images, like a UNet. For comparison, we show a sample generated from a model without coarse-to-fine conditioning with comparable number of parameters. **These results show that we can reduce the number of parameters drastically if the architecture leverges structure in the image correctly.**
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/syntheis_MS.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">
-    A simplified UNet (upside-down) with a linear encoder path. The encoder consists of a multi-scale wavelet decomposition. 
+    
   </span>
 </p>
 
-Here we form a hypothesis that one way they reduce dimensionality is by factorzing the density into a series of low-dimensinoal conditionals. the Low dimensinoality arises from conditional locality, which we tested in this paper. 
 
-
-give an example: if you have a blurred outline of the face and locations of the details, then you can refine it
 
 ZK, Guth, Mallat, Simoncelli, Learning multi-scale local conditional probability models of images. ICLR, 2023 (Oral). <br>
   [PDF](https://openreview.net/pdf?id=VZX2I_VVJKH) | [Project page](https://github.com/LabForComputationalVision/local-probability-models-of-images)
