@@ -149,38 +149,38 @@ Why should we try to understand them? Beyond the intrinsic satisfaction of figur
 Classical denoising heavily relied on designing transformations in which the image representation was sparse.
 Many of these denoisers worked in three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function to suppress the noise, and 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the transformed space shoud be as sparse and compact as possible. But, due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), so failed to fully harvest the intrinsic low-dimensionality of images. Deep neural network denoisers are many times more capable than their classical predecessors. But how do they work? What is the transformation they learn from data?  
 
-To analyze and understand how deep net denoisers work we drew on the insight from the classical literature. In the paper below, we showed that locally-linear DNN denosiers can also be described as soft projection (shrinkage) in a sparse basis. What makes them so powerful is that the basis is adaptive to the underlying image, thanks to the nonlinearities of the mapping. The adaptive basis can be exposed by Singular Value Decompotion (SVD) of the Jacobian ($$A_y$$) of the denoising mapping w.r.t. the noisy input
+To analyze and understand how deep net denoisers work we drew on the insight from the classical literature. In the paper below, we showed that locally-linear DNN denosiers can be described as soft projection (shrinkage) in a sparse basis. What makes them so powerful is that the basis is adaptive to the underlying image, thanks to the nonlinearities of the mapping. The adaptive basis can be exposed by Singular Value Decompotion (SVD) of the Jacobian ($$A_y$$) of the denoising mapping w.r.t. the noisy input. The top singular vectors span the **signal subpace** which can be interpreted as the **tangent plane to the (blurred) image manifold at clean image point**.
 
 $$
 \hat{x}(y) = A_y y = USV^T y = \Sigma_{i =1} ^N s_i (V_i^T y) U_i . 
 $$
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/svd_1.png" alt="Project schematic" width="45%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/svd_1.png" alt="Project schematic" width="45%">
 <img src="https://zahra-kadkhodaie.github.io/images/top_sing_vect.png" alt="Project schematic" width="45%"><br>    
       <span style="font-size: 0.80em; color: #555;">
-          Left: Fast decay of singular values shows that the adaptive basis is very sparse for the input image. The histogram shows that the Jacobian is almost symmetric. So, the network implements a soft projection onto a basis adaptive to the input. Right: Top singular vectores capture image features which will be preserved and bottom singular vectors are noise which will be supressed. Top singular vectors span the signal subspace which can be interpreted as the tangent plane to the (blurred) image manifold at clean image point.
+          Left: Fast decay of singular values shows that the adaptive basis is very sparse for the input image. Middle: The histogram shows that the Jacobian is almost symmetric. So, the network implements a soft projection onto a basis adaptive to the input. Right: Top singular vectores capture image features which will be preserved and bottom singular vectors are noise which will be supressed. 
   </span>
 </p>
+
+Dimensionality of the subspace depends on the noise level on the input image. At higher noise levels, more dimensions fewer signal dimensions can survive the noise. Empirically, dimensionality drops on avergae proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/effective_dim.png" alt="Project schematic" width="45%"><br>
-      <span style="font-size: 0.80em; color: #555;">
-          Dimensionality of the subspace depends on the noise level on the input image. At higher noise levels, more dimensions fewer signal dimensions can survive the noise. Empirically, dimensionality drops on avergae proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
+      <span style="font-size: 0.80em; color: #555;"> 
   </span>
 </p>
 
-In the Bayesian tradition of image processing, 
+In addition to analysizing the column space of the Jacobian, we also analyzed its row space. Interestingly, we could interpet the DNN denoising mapping as an adaptive filtering procedure in pixel domain, which ties it to another type of denoiser deign in classical signal processing literture (see [this review paper](https://users.soe.ucsc.edu/~milanfar/publications/journal/ModernTour.pdf)). Here, a pixel is estimated by a weighted average of neighboring pixel. The neighborhood is daptive to both the noise level and the underlying image structure. 
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/filtering.png" alt="Project schematic" width="80%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+          
+  </span>
+</p>
 
 
-
-Jacobian: symmetric 
-intrepret rows: filtering: old lit. point is the increasing size of weighted averging. Model figures out the noise size (size of neighborhood) and is adaptive to the content 
-interpret columns: basis in which a noisy image is being denoised 
-(tangent plane of a blurred manifold)
-
-Both filtering and basis are noise level dependent. This can be formulated in a noise-dependent effective dimesionality 
- 
 **Reference:**  <br>
 Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks. ICLR, 2020. <br>
   [PDF](https://openreview.net/pdf?id=HJlSmC4FPS) | [Project page](https://labforcomputationalvision.github.io/bias_free_denoising/) | [Code](https://github.com/LabForComputationalVision/bias_free_denoising) <br>
