@@ -286,7 +286,7 @@ $$
 *But does it make sense to assume the conditional densities are low-dimensional?!* The answer is yes! The reduction in dimensionality comes from the conditional-locality of the details density. In other words, $$p(\bar{x_j})$$ is not necessarily low-dimensional, but $$p(\bar{x_j}| x_j)$$ is: knowing the coarser structure in the image, we only need a small neighborhood around a pixel to denoise it. In other words, we are assuming a hierarchical markov property over the details values, and our experiments show that this assumption is aligned with true data structure. We tested this 
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/local-cond.png" alt="Project schematic" width="90%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/local-cond.png" alt="Project schematic" width="40%"><br>
       <span style="font-size: 0.80em; color: #555;">
     A simplified UNet (upside-down) with a linear encoder path. The encoder consists of a multi-scale wavelet decomposition. 
   </span>
@@ -295,7 +295,7 @@ $$
 hypothesis by making the Receptive Field (RF) of the decoder blocks as small as $$9 \times 9$$ for input images of size $$320 \times 320$$ and observed almost no reduction of performance. 
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/lMS_comparisons.png" alt="Project schematic" width="90%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/MS_comparisons.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">
     A simplified UNet (upside-down) with a linear encoder path. The encoder consists of a multi-scale wavelet decomposition. 
   </span>
