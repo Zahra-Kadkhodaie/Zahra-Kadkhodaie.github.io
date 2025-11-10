@@ -193,7 +193,7 @@ $$
   </span>
 </p>
 
-Dimensionality of the subspace is also adaptive and depends on the noise level on the input image. At higher noise levels, fewer signal dimensions can survive the noise. Empirically, dimensionality drops differently for different images, but on average it drops proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
+**Dimensionality of the subspace is also adaptive** and depends on the noise level on the input image. At higher noise levels, fewer signal dimensions can survive the noise. Empirically, dimensionality drops differently for different images, but on average it drops proportional to the inverse of noise level. (See paper for results that shows the subspaces at higher noise levels are nested within subsapces with lower noise levels). 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/effective_dim.png" alt="Project schematic" width="45%"><br>
@@ -218,7 +218,7 @@ Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Ima
 
 <!-- ------------------------------------------------- -->
 
-##  <span style="color:#008000"> DNN denoisers learn Geometry-adaptive harmonic basis </span>
+##  <span style="color:#008000"> DNN denoisers learn Geometry-adaptive harmonic bases </span>
 We made the idea of soft projection in an adaptive basis more precise in the paper below. Investiagting the denoising mapping in the case of synthetic images where we know the optimal solution reveals that the adpative bases can be characterize with two classes of harmonics: one-dimensional oscilating patterns along the contours and two-dimensional oscillating patterns in the flat backgrounds. 
 
 <p align="center" markdown="1">
@@ -264,13 +264,11 @@ Learning multi-scale local conditional probability models of images: conditional
 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#008000"> unsupervised representation learning via denoising </span>
+## <span style="color:#008000"> Unsupervised representation learning via denoising </span>
 Understanding at a more mechanistcis level 
 representation
    open the black box. What representation arises from learning the score.
    spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
-
-
 
 
 <!-- ------------------------------------------------- -->
@@ -284,22 +282,22 @@ Ultimately, we want to learn the density to use it! Inverse problems in signal p
 ## Linear inverse problems: 
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#A52A2A"> Stochastic solutions to linear inverse problems using diffusion models </span>
+## <span style="color:#008000"> Stochastic solutions to linear inverse problems using diffusion models </span>
 <!-- ------------------------------------------------- -->
 
-## <span style="color:#A52A2A"> Learning optimal linear measurement for a prior embeded in a denoiser </span>
+## <span style="color:#008000"> Learning optimal linear measurements for a prior embeded in a denoiser </span>
 <!-- ------------------------------------------------- -->
 
 
-## <span style="color:#A52A2A">  cone excitation</span>
+## <span style="color:#008000">  cone excitation</span>
 <!-- ------------------------------------------------- -->
 
 
 ## non-linear inverse problems:
 
-## <span style="color:#A52A2A">  feature guided? </span>
+## <span style="color:#008000">  feature guided? </span>
 
-## <span style="color:#A52A2A">  Guided sampling from a texture model </span>
+## <span style="color:#008000">  Guided sampling from a texture model </span>
  
 
 
