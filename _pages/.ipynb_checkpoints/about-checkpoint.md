@@ -294,14 +294,12 @@ ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geo
 </details>
 
 ## <span style="color:#008000"> Conditional locality of image densities </span>
-We showed that diffusion models can overcome the **curse of dimensionality** and generalize beyond the training set. But how do they achieve this feat? What are the **inductive biases** that lead to learning the score? To understand this, we need to open the black box of the DNN denoisers to understand how it works. In the paper below, we took a step in this direction by studying a somewhat **simplified UNet architecture ...**
-
+We showed that diffusion models can overcome the **curse of dimensionality** and generalize beyond the training set. But how do they achieve this feat? What are the **inductive biases** that lead to learning the score? How can they learn a high dimensionality density with finite data? In the paper below, we showed that one property of the image densities that's leverged by the network is the locality of the conditional densities ...
 
 <details markdown="1">
   <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
 
-
-How did we modify the UNet without hurting its performace? We replaced its encoder path with a multi-scale wavelet transform (Haar filter more specfically). It is simply a linear orthogonal transform ($$W$$) which is implemented by only 4 convolutional filters: three of them extract the details,$$\bar{x_j}$$,  (vertical, horizontal, diagonal differences) and one holds on to the low-resolution coarser content (2x2 averaging). We apply the same 4 filters on the low-resolution image, and keep repeating it to create mutiple blocks. $$j$$ denotes depth of the scale ($$j=0$$ is the input level, and $$j=J$$ is the deepest scale - the bottom block). Using this representation gaurantees that different scales do not overlap, making the model more analyzable. <br>
+To understand this, we need to open the black box of the DNN denoisers to understand how it works. We took a step in this direction by studying a somewhat **simplified UNet architecture.** How did we modify the UNet without hurting its performace? We replaced its encoder path with a multi-scale wavelet transform (Haar filter more specfically). It is simply a linear orthogonal transform ($$W$$) which is implemented by only 4 convolutional filters: three of them extract the details,$$\bar{x_j}$$,  (vertical, horizontal, diagonal differences) and one holds on to the low-resolution coarser content (2x2 averaging). We apply the same 4 filters on the low-resolution image, and keep repeating it to create mutiple blocks. $$j$$ denotes depth of the scale ($$j=0$$ is the input level, and $$j=J$$ is the deepest scale - the bottom block). Using this representation gaurantees that different scales do not overlap, making the model more analyzable. <br>
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/wavelet_decom.png" alt="Project schematic" width="70%"><br>
@@ -363,7 +361,8 @@ ZK, Guth, Mallat, Simoncelli, Learning multi-scale local conditional probability
 </details>
 
 ## <span style="color:#008000"> Unsupervised representation learning via denoising </span>
-Diffusion models learn probability densities by estimating the score with a neural network trained to denoise. What kind of representation arises within these networks, and how does this relate to the learned density? In the paper below, we explored this question ...
+
+Diffusion models learn probability densities by estimating the score with a neural network trained to denoise. What kind of representation arises within these networks, and how does this relate to the learned density? In the paper below, we show that a fully unsupervised notion of semantic similarity arises from the task of denoising ...
 
 <details markdown="1">
   <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
@@ -371,7 +370,7 @@ Diffusion models learn probability densities by estimating the score with a neur
 
 We studied a fully convolutional UNet trained to estimate the score at all noise levels. Importantly, to isolate the effect of the objective, we remove all the conditioning information (e.g. labels, text, exemplar image, etc) during training. It is remarkable how far the objective goes! 
 
-Consider the vector of spatial averages of the channels in the last layer of the middle block. A k-means clustering of these vectors reveals that semantically similar images are near each other in this latent space: a fully-unsupervised bottom-up notion of similarity arises from the task of denoising (or noisy score estimation)! This notion of similarity is only partially aligned with object classes. For a model trained on ImageNet, Images within a cluster are visually similar and share global organization and semantic patterns, but they are not necessarily from the same class: dogs are clustered based on their pose, but not their breed. What is captures is “the gist of a scene.” [Oliva 2005]
+First we show that denoising starts at the bottom block, and then continues with coarse to fine conditioning in the decoder. Interestingly, consistent with our simplified UNet (see the previous project), encoder blocks only "prepare" the image for denoising even though they are non-linear here. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/reps.001.png" alt="Project schematic" width="90%"><br>
@@ -380,14 +379,15 @@ Consider the vector of spatial averages of the channels in the last layer of the
   </span>
 </p>
 
+We also show the representation in the bottom block is most robust to noise level, so we focus on that in this paper. Take the vector of spatial averages of the channels in the last layer of the middle block. A k-means clustering of these vectors reveals that semantically similar images are near each other in this latent space: **a fully-unsupervised bottom-up notion of similarity arises from the task of denoising (or noisy score estimation)!** This notion of similarity is only partially aligned with object classes. For a model trained on ImageNet, Images within a cluster are visually similar and share global organization and semantic patterns, but they are not necessarily from the same class: dogs are clustered based on their pose, but not their breed. What is captures is “the gist of a scene.” [Oliva 2005]
+
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/reps.002.png" alt="Project schematic" width="90%"><br>
-      <span style="font-size: 0.80em; color: #555;">
-    
+<img src="https://zahra-kadkhodaie.github.io/images/emergent_clusters.png" alt="Project schematic" width="90%"><br>
+      <span style="font-size: 0.80em; color: #555;">    
   </span>
 </p>
 
-Two intriguing properties of the latent space are: the representation is sparse (most channels are off for a given image) and selective (a different subset of channels is activated for different images). A direct consequence of these properties is that the representation lies on a union of low-dimensional subspaces. From a geometric point of view: the denoising objective alone transforms a union of manifolds in the pixel space to a union of subspaces in the latent space. Within each subspace lies a cluster of image representations that are semantically similar. 
+
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/reps.003.png" alt="Project schematic" width="90%"><br>
@@ -396,10 +396,22 @@ Two intriguing properties of the latent space are: the representation is sparse 
   </span>
 </p>
 
+
+
+
+Two intriguing properties of the latent space are: the representation is sparse (most channels are off for a given image) and selective (a different subset of channels is activated for different images). A direct consequence of these properties is that the representation lies on a union of low-dimensional subspaces. From a geometric point of view: the denoising objective alone transforms a union of manifolds in the pixel space to a union of subspaces in the latent space. Within each subspace lies a cluster of image representations that are semantically similar. 
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/reps.002.png" alt="Project schematic" width="90%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+    
+  </span>
+</p>
+
 We further study this representation using a stochastic reconstruction algorithm: We sample from the density learned by the model while conditioning the trajectory on the model’s own representation of a target image. The algorithm alternates between a score step and a guidance step which matches the representation of the sample to that of the target. For a given target image, this algorithm generates samples that are similar to the target in the global features but different from it in location-non specific details. Some examples (each group shows 8 samples generated with internal representation matched to the (center) target image)
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/reps.004.png" alt="Project schematic" width="90%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/reps.003.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">
     
   </span>
@@ -412,6 +424,9 @@ ZK, Mallat, Simoncelli, Unconditional CNN denoiser contain sparse semantic repre
 
 </details>
 
+<div style="height:30px;"></div>
+
+
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 <!-- # <span style="color:#A52A2A"> Utilizing Learned Density Models to Solve Inverse Problems </span> -->
@@ -421,7 +436,6 @@ ZK, Mallat, Simoncelli, Unconditional CNN denoiser contain sparse semantic repre
 
 Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
 
-## Linear inverse problems: 
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000"> Stochastic solutions to linear inverse problems using diffusion models </span>
@@ -447,7 +461,6 @@ Zhang, ZK, Simoncelli, Brainard, Generalized Compressed Sensing for Image Recons
 <!-- ------------------------------------------------- -->
 
 
-## non-linear inverse problems:
 
 <!-- ## <span style="color:#008000">  feature guided? </span> -->
 
