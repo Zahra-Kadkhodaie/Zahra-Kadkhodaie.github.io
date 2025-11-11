@@ -33,9 +33,10 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments.
 
 
-Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* ...
+Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* ... 
 <details markdown="1">
-  <summary><strong> <span style="color:#A52A2A"> Click to expand to see a summary </span> </strong></summary>
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
 
 
 Remarkably, in the case of Gaussian denoising, the relationship between the denoising mapping and the prior is exact and explicit, thanks to a classical statistics result [Robin 1956, Miyasawa 1961]: 
@@ -103,6 +104,10 @@ Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Pro
 
 Can the embeded prior in a denoiser be made more explict by predicting the energy ($$-\log p$$) rather than the score ($$ \nabla \log p$$)? 
 
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
+
 There are two main problems to tackle to make this happen: 1) finding the right architecture and 2) normalizing the density. Neither of these problems exit for score models. Architecures have been refined, through a collective effort, to have the right inductive biases. This evolution has not happened for energy models, putting them at a considerable disadvange. Additionally, in score models, the normalizing factor is eliminated thanks to the gradient. In the paper below, we introduced two simple tricks to overcome these two issues and learn $$\log p$$ directly. 
 
 First, we showed that score model architetures can be re-purposed for energy models, by setting the energy to be 
@@ -151,6 +156,7 @@ indicate values for the example images on the right.
 
 **Reference:**  <br>
 Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
+</details>
 
 
 
@@ -169,7 +175,13 @@ Why should we try to understand them? Aside from the intrinsic satisfaction of f
 <!-- ------------------------------------------------- -->
 
 ##  <span style="color:#008000"> Generalization in diffusion models </span>
-A "good" density model learned from data, does not merely memorize the training set (i.e. the empirical density) but generalizes beyond that. In the paper below, we showed that denoisers used in diffusion models enter a strong generalization phase with finite data, despite *the curse of dimensionality*. Convolutional neural net denoisers **memorize** the training set of very small size. With larger training set, they enter a **transition phase** in which they either memorize and combine patches of the training exmaples, or return low quality samples. Eventually, they enter a **generalization regime** in which the two models generate almost the same images if initialize at the same sample (and match the injected iteration noise). This shows that the learned mapping across noise levels becomes independent from the individual images in the training set. In other words, **model variance tends to zero**. 
+A "good" density model learned from data, does not merely memorize the training set (i.e. the empirical density) but generalizes beyond that. In the paper below, we showed that denoisers used in diffusion models enter a strong generalization phase with finite data, despite *the curse of dimensionality* **...**
+
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
+
+Convolutional neural net denoisers **memorize** the training set of very small size. With larger training set, they enter a **transition phase** in which they either memorize and combine patches of the training exmaples, or return low quality samples. Eventually, they enter a **generalization regime** in which the two models generate almost the same images if initialize at the same sample (and match the injected iteration noise). This shows that the learned mapping across noise levels becomes independent from the individual images in the training set. In other words, **model variance tends to zero**. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/transition_mem_gen.png" alt="Project schematic" width="95%"><br>
@@ -188,12 +200,18 @@ A "good" density model learned from data, does not merely memorize the training 
 **Refrence** <br>
 ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geometry-adaptive harmonic representations. ICLR, 2024 (Best paper award & oral). <br>
 [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
+</details>
+
 
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000">  Denoising is a soft projection on an adaptive basis  </span>
 Classical denoising heavily relied on designing transformations in which the image representation was **sparse**.
-Many of these denoisers worked in three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function (**soft projection**) to suppress the noise, and 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the transformed space shoud be as sparse and compact as possible. But, due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), so failed to fully harvest the intrinsic low-dimensionality of images. Deep neural network denoisers are many times more capable than their classical predecessors. But how do they work? *What is the transformation they learn from data?*  
+Many of these denoisers worked in three stages: 1) transform the noisy image where noise and image are separable, 2) apply a shrinkage function (**soft projection**) to suppress the noise, and 3) transform back to pixel space. To maximally preserve the image and remove noise, the image represention in the transformed space shoud be as sparse and compact as possible. But, due to computataional limitations, these transformations were often linear (e.g. Fourier, Wavelet), so failed to fully harvest the intrinsic low-dimensionality of images. Deep neural network denoisers are many times more capable than their classical predecessors. But how do they work? *What is the transformation they learn from data?* ...
+
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
 
 To analyze and understand how deep net denoisers work we drew on the insight from the classical literature. In the paper below, we showed that locally-linear DNN denosiers can be described as soft projection (shrinkage) in a sparse basis. What makes them so powerful is that the basis is adaptive to the underlying image, thanks to the nonlinearities of the mapping. The adaptive basis can be exposed by Singular Value Decompotion (SVD) of the Jacobian ($$A_y$$) of the denoising mapping w.r.t. the noisy input. The top singular vectors span the **signal subpace** which can be interpreted as the **tangent plane to the (blurred) image manifold at clean image point**.
 
@@ -231,11 +249,18 @@ In addition to analysizing the column space of the Jacobian, we also analyzed it
 Mohan\*, ZK\*, Simoncelli & Fernandez-Granda, Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks. ICLR, 2020. <br>
   [PDF](https://openreview.net/pdf?id=HJlSmC4FPS) | [Project page](https://labforcomputationalvision.github.io/bias_free_denoising/) | [Code](https://github.com/LabForComputationalVision/bias_free_denoising) <br>
 <sub>\* denotes equal contribution</sub>
+</details>
 
 <!-- ------------------------------------------------- -->
 
 ##  <span style="color:#008000"> DNN denoisers learn Geometry-adaptive harmonic bases (GAHB) </span>
-We made the idea of soft projection in an adaptive basis more precise in the paper below. Investiagting the denoising mapping in the case of synthetic images where we know the optimal solution reveals that the adpative bases can be characterize with two classes of harmonics: one-dimensional oscilating patterns along the contours and two-dimensional oscillating patterns in the flat backgrounds. 
+We made the idea of soft projection in an adaptive basis more precise in the paper below...
+
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
+
+Investiagting the denoising mapping in the case of synthetic images where we know the optimal solution reveals that the adpative bases can be characterize with two classes of harmonics: one-dimensional oscilating patterns along the contours and two-dimensional oscillating patterns in the flat backgrounds. 
 
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/github_fig2.png" alt="Project schematic" width="90%"><br>
@@ -260,12 +285,19 @@ We made the idea of soft projection in an adaptive basis more precise in the pap
 
 From a mechanistic perspective, the harmanics arise from the convolutional layers. However, these harmonics are way more sophisticated than their precedator, the Fourier basis (weiner filter), due to the non-linearities of the network. Understanding the exact relationship between the GAHBs and the cascade of operations in the network remains to be understood. 
 
+</details>
+
 **Refrence** <br>
 ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geometry-adaptive harmonic representations. ICLR, 2024 (Best paper award & oral). <br>
  [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
 
 ## <span style="color:#008000"> Conditional locality of image densities </span>
 We showed that diffusion models can overcome the **curse of dimensionality** and generalize beyond the training set. But how do they achieve this feat? What are the **inductive biases** that lead to learning the score? To understand this, we need to open the black box of the DNN denoisers to understand how it works. In the paper below, we took a step in this direction by studying a somewhat **simplified UNet architecture**. 
+
+
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
 
 How did we modify the UNet without hurting its performace? We replaced its encoder path with a multi-scale wavelet transform (Haar filter more specfically). It is simply a linear orthogonal transform ($$W$$) which is implemented by only 4 convolutional filters: three of them extract the details,$$\bar{x_j}$$,  (vertical, horizontal, diagonal differences) and one holds on to the low-resolution coarser content (2x2 averaging). We apply the same 4 filters on the low-resolution image, and keep repeating it to create mutiple blocks. $$j$$ denotes depth of the scale ($$j=0$$ is the input level, and $$j=J$$ is the deepest scale - the bottom block). Using this representation gaurantees that different scales do not overlap, making the model more analyzable. <br>
 
@@ -326,6 +358,7 @@ This model can be used to generate images, like a UNet. For comparison, we show 
 ZK, Guth, Mallat, Simoncelli, Learning multi-scale local conditional probability models of images. ICLR, 2023 (Oral). <br>
   [PDF](https://openreview.net/pdf?id=VZX2I_VVJKH) | [Project page](https://github.com/LabForComputationalVision/local-probability-models-of-images)
 <!-- ------------------------------------------------- -->
+</details>
 
 ## <span style="color:#008000"> Unsupervised representation learning via denoising </span>
 Understanding how the UNet works, when the encoder is also non-linear (original unet). In other words, what is the representation that arises from learnining the score?  
