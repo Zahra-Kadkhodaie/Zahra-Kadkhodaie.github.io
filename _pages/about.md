@@ -365,6 +365,10 @@ ZK, Guth, Mallat, Simoncelli, Learning multi-scale local conditional probability
 ## <span style="color:#008000"> Unsupervised representation learning via denoising </span>
 Diffusion models learn probability densities by estimating the score with a neural network trained to denoise. What kind of representation arises within these networks, and how does this relate to the learned density? In the paper below, we explored this question ...
 
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
+
 We studied a fully convolutional UNet trained to estimate the score at all noise levels. Importantly, to isolate the effect of the objective, we remove all the conditioning information (e.g. labels, text, exemplar image, etc) during training. It is remarkable how far the objective goes! 
 
 Consider the vector of spatial averages of the channels in the last layer of the middle block. A k-means clustering of these vectors reveals that semantically similar images are near each other in this latent space: a fully-unsupervised bottom-up notion of similarity arises from the task of denoising (or noisy score estimation)! This notion of similarity is only partially aligned with object classes. For a model trained on ImageNet, Images within a cluster are visually similar and share global organization and semantic patterns, but they are not necessarily from the same class: dogs are clustered based on their pose, but not their breed. What is captures is “the gist of a scene.” [Oliva 2005]
@@ -395,7 +399,7 @@ Two intriguing properties of the latent space are: the representation is sparse 
 We further study this representation using a stochastic reconstruction algorithm: We sample from the density learned by the model while conditioning the trajectory on the model’s own representation of a target image. The algorithm alternates between a score step and a guidance step which matches the representation of the sample to that of the target. For a given target image, this algorithm generates samples that are similar to the target in the global features but different from it in location-non specific details. Some examples (each group shows 8 samples generated with internal representation matched to the (center) target image)
 
 <p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/reps.003.png" alt="Project schematic" width="90%"><br>
+<img src="https://zahra-kadkhodaie.github.io/images/reps.004.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">
     
   </span>
@@ -406,6 +410,7 @@ We further study this representation using a stochastic reconstruction algorithm
 ZK, Mallat, Simoncelli, Unconditional CNN denoiser contain sparse semantic representations of images. arXiv, 2025.<br>
  [PDF](https://arxiv.org/pdf/2506.01912)
 
+</details>
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
