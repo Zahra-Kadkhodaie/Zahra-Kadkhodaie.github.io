@@ -22,22 +22,20 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- ------------------------------------------------- -->
 <!-- #  <span style="color:#A52A2A"> Learning Image Density Models from Data </span> -->
 # Learning Image Density Models from Data
-
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-
-<details markdown="1">
-  <summary><strong> <span style="color:#008000"> Click to expand to see a summary </span> </strong></summary>
 
 
 
 ## <span style="color:#008000"> Learning and sampling from a density implicit in a denoiser </span>
 <!-- ## Learning and sampling from the density implicit in a denoiser -->
 
-Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments. 
+Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments.
 
 
-Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* 
+Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* ...
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click to expand to see a summary </span> </strong></summary>
 
 
 Remarkably, in the case of Gaussian denoising, the relationship between the denoising mapping and the prior is exact and explicit, thanks to a classical statistics result [Robin 1956, Miyasawa 1961]: 
@@ -96,7 +94,7 @@ More noise during synthesis results in higher probability images (right panel) b
 ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
 Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
 
-
+</details>
 
 <!-- ------------------------------------------------- -->
 
@@ -154,7 +152,7 @@ indicate values for the example images on the right.
 **Reference:**  <br>
 Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
 
-</details>
+
 
 <div style="height:30px;"></div>
 
@@ -162,7 +160,6 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 <!-- ------------------------------------------------- -->
 <!-- # <span style="color:#A52A2A"> Understanding and Evaluating Learned Density Models </span> -->
 #  Understanding and Evaluating Learned Density Models 
-
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 <!--  -->
@@ -343,7 +340,8 @@ ZK, Mallat, Simoncelli, Unconditional CNN denoiser contain sparse semantic repre
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# <span style="color:#A52A2A"> Utilizing Learned Density Models to Solve Inverse Problems </span>
+<!-- # <span style="color:#A52A2A"> Utilizing Learned Density Models to Solve Inverse Problems </span> -->
+#  Utilizing Learned Density Models to Solve Inverse Problems
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
