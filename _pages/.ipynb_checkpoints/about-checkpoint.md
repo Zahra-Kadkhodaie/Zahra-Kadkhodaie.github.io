@@ -24,6 +24,11 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
+<details markdown="1">
+  <summary><strong> Click to expand for a summmary </strong></summary>
+
+
+
 ## <span style="color:#008000"> Learning and sampling from a density implicit in a denoiser </span>
 <!-- ## Learning and sampling from the density implicit in a denoiser -->
 
@@ -146,6 +151,8 @@ indicate values for the example images on the right.
 
 **Reference:**  <br>
 Guth, ZK & Simoncelli, Learning normalized image densities via dual score matching. NeurIPS, 2025  [PDF](https://arxiv.org/pdf/2506.05310) <br>
+
+</details>
 
 
 <!-- ------------------------------------------------- -->
@@ -341,6 +348,13 @@ Ultimately, we want to learn the density to use it! Inverse problems in signal p
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000"> Stochastic solutions to linear inverse problems using diffusion models </span>
+
+**Reference:** <br>
+ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
+Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
+
+
+
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000"> Learning optimal linear measurements for a prior embeded in a denoiser </span>
