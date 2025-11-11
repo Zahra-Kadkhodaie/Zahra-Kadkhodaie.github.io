@@ -20,12 +20,14 @@ I enjoy studying these complementary perspectives and seeing how they inform one
  
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-#  <span style="color:#A52A2A"> Learning Image Density Models from Data </span>
+<!-- #  <span style="color:#A52A2A"> Learning Image Density Models from Data </span> -->
+# Learning Image Density Models from Data
+
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
 <details markdown="1">
-  <summary><strong> Click to expand for a summmary </strong></summary>
+  <summary><strong> <span style="color:#008000"> Click to expand to see a summary </span> </strong></summary>
 
 
 
@@ -73,8 +75,8 @@ A Deep Neural Network (DNN) denoiser, $$\hat{x}_{\theta}(y)$$, hence, computes t
 </p> -->
 
 
-A key property of our algorithm is that the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive noise schedule during sampling**, where the step size depends on the noise amplitute estimated by the model. 
-Additionally, the injected noise at each iteration can be tuned to steer the sampling trajectory toward lower- or higher-probability regions of the distribution, with guaranteed convergence.
+Two key properties of our algorithm are that 1) the denoiser is noise-level-blind -- it does not take as input $$\sigma$$. This allows an **adaptive noise schedule during sampling**, where the step size depends on the noise amplitute estimated by the model. 
+2) The injected noise at each iteration can be tuned to **steer the sampling trajectory toward lower- or higher-probability regions** of the distribution, with guaranteed convergence.
 
 
 <p align="center" markdown="1">
@@ -154,10 +156,13 @@ Guth, ZK & Simoncelli, Learning normalized image densities via dual score matchi
 
 </details>
 
+<div style="height:30px;"></div>
 
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
-# <span style="color:#A52A2A"> Understanding and Evaluating Learned Density Models </span>
+<!-- # <span style="color:#A52A2A"> Understanding and Evaluating Learned Density Models </span> -->
+#  Understanding and Evaluating Learned Density Models 
+
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 <!--  -->
