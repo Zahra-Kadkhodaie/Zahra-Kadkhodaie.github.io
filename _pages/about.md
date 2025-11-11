@@ -30,10 +30,11 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 ## <span style="color:#008000"> Learning and sampling from a density implicit in a denoiser </span>
 <!-- ## Learning and sampling from the density implicit in a denoiser -->
 
-Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to assume a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on empirical findings about image structures -- like spectral, sparsity, locality -- which led to a steady but slow improvments.
+Before deep learning, one of the major approches to solve Gaussian denoising problem (as well as other inverse problems) was to **assume** a prior over the space of images (e.g. Gaussian, Union of subspaces, Markov random fields) and then estimate a solution in a Bayesian framework. The denoiser performance depended on how well this prior approximated the "true" images density. Designing image priors, however, is not trivial and progress relied on **empirical findings about image structures** -- like spectral, sparsity, locality -- which led to a steady but slow improvments.
 
 
-Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: *what is the **prior** that the learned mapping impliciltly relies on?* ... 
+Deep learning revolution upended this trend. We gained access to computrational tools to learn, with unprecedented success, complex high-dimensional mappings for tasks such as denoising, segmentation, classification, etc. without assuming a prior. Yet this phenomenal performance raises a question: **what is the prior that the learned mapping impliciltly relies on? ...** 
+
 <details markdown="1">
   <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
 
@@ -285,14 +286,15 @@ Investiagting the denoising mapping in the case of synthetic images where we kno
 
 From a mechanistic perspective, the harmanics arise from the convolutional layers. However, these harmonics are way more sophisticated than their precedator, the Fourier basis (weiner filter), due to the non-linearities of the network. Understanding the exact relationship between the GAHBs and the cascade of operations in the network remains to be understood. 
 
-</details>
 
 **Refrence** <br>
 ZK, Guth, Simoncelli, Mallat, Generalization in diffusion models arises from geometry-adaptive harmonic representations. ICLR, 2024 (Best paper award & oral). <br>
  [PDF](https://openreview.net/pdf?id=ANvmVS2Yr0) | [Project page](https://github.com/LabForComputationalVision/memorization_generalization_in_diffusion_models)
 
+</details>
+
 ## <span style="color:#008000"> Conditional locality of image densities </span>
-We showed that diffusion models can overcome the **curse of dimensionality** and generalize beyond the training set. But how do they achieve this feat? What are the **inductive biases** that lead to learning the score? To understand this, we need to open the black box of the DNN denoisers to understand how it works. In the paper below, we took a step in this direction by studying a somewhat **simplified UNet architecture**. 
+We showed that diffusion models can overcome the **curse of dimensionality** and generalize beyond the training set. But how do they achieve this feat? What are the **inductive biases** that lead to learning the score? To understand this, we need to open the black box of the DNN denoisers to understand how it works. In the paper below, we took a step in this direction by studying a somewhat **simplified UNet architecture ...**
 
 
 <details markdown="1">
@@ -361,10 +363,44 @@ ZK, Guth, Mallat, Simoncelli, Learning multi-scale local conditional probability
 </details>
 
 ## <span style="color:#008000"> Unsupervised representation learning via denoising </span>
-Understanding how the UNet works, when the encoder is also non-linear (original unet). In other words, what is the representation that arises from learnining the score?  
-Understanding at a more mechanistcis level 
+Diffusion models learn probability densities by estimating the score with a neural network trained to denoise. What kind of representation arises within these networks, and how does this relate to the learned density? In the paper below, we explored this question ...
 
-spatial average of channels in the deepest layer: sparse and selective (union of subspaces)
+We studied a fully convolutional UNet trained to estimate the score at all noise levels. Importantly, to isolate the effect of the objective, we remove all the conditioning information (e.g. labels, text, exemplar image, etc) during training. It is remarkable how far the objective goes! 
+
+Consider the vector of spatial averages of the channels in the last layer of the middle block. A k-means clustering of these vectors reveals that semantically similar images are near each other in this latent space: a fully-unsupervised bottom-up notion of similarity arises from the task of denoising (or noisy score estimation)! This notion of similarity is only partially aligned with object classes. For a model trained on ImageNet, Images within a cluster are visually similar and share global organization and semantic patterns, but they are not necessarily from the same class: dogs are clustered based on their pose, but not their breed. What is captures is “the gist of a scene.” [Oliva 2005]
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/reps.001.png" alt="Project schematic" width="90%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+    
+  </span>
+</p>
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/reps.002.png" alt="Project schematic" width="90%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+    
+  </span>
+</p>
+
+Two intriguing properties of the latent space are: the representation is sparse (most channels are off for a given image) and selective (a different subset of channels is activated for different images). A direct consequence of these properties is that the representation lies on a union of low-dimensional subspaces. From a geometric point of view: the denoising objective alone transforms a union of manifolds in the pixel space to a union of subspaces in the latent space. Within each subspace lies a cluster of image representations that are semantically similar. 
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/reps.003.png" alt="Project schematic" width="90%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+    
+  </span>
+</p>
+
+We further study this representation using a stochastic reconstruction algorithm: We sample from the density learned by the model while conditioning the trajectory on the model’s own representation of a target image. The algorithm alternates between a score step and a guidance step which matches the representation of the sample to that of the target. For a given target image, this algorithm generates samples that are similar to the target in the global features but different from it in location-non specific details. Some examples (each group shows 8 samples generated with internal representation matched to the (center) target image)
+
+<p align="center" markdown="1">
+<img src="https://zahra-kadkhodaie.github.io/images/reps.003.png" alt="Project schematic" width="90%"><br>
+      <span style="font-size: 0.80em; color: #555;">
+    
+  </span>
+</p>
+
 
 **Reference:**
 ZK, Mallat, Simoncelli, Unconditional CNN denoiser contain sparse semantic representations of images. arXiv, 2025.<br>
