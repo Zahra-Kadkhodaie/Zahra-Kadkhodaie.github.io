@@ -433,7 +433,6 @@ Ultimately, we want "good" density models of images in order to use it real-worl
 
 In the paper below, we introduced an algorithm to solve *any* linear inverse problem by sampling from a posterior. The posterior is built by combining the prior implicit in a denoiser and the likelihood function which returns partial meaurement of an image. Examples are low resolution image, missing pixels, blurred image, etc. The advantage of Bayesian approach is its universality. Once you have a "good" prior, you can utilize it to solve any inverse problems. This paper shortly preceded the wave of "diffusion models", so the phrase does not apprear in the title, but variations of the algorithm emerged in the lietrature under the umberela of **solving inverse problems using diffusion models...**
 
-
 <details markdown="1">
   <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
 
