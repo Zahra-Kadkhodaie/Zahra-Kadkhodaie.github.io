@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "Service"
-permalink: /service/
+title: "Science of Deep Learning"
+permalink: /sci4DL/
 author_profile: true   # optional
 ---
 
