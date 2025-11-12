@@ -362,7 +362,7 @@ ZK, Guth, Mallat, Simoncelli, Learning multi-scale local conditional probability
 
 ## <span style="color:#008000"> Unsupervised representation learning via denoising </span>
 
-Diffusion models learn probability densities by estimating the score with a neural network trained to denoise. What kind of representation arises within these networks, and how does this relate to the learned density? In the paper below, we show that a fully unsupervised notion of semantic similarity arises from the task of denoising ...
+Diffusion models learn probability densities by estimating the score with a neural network trained to denoise. What kind of representation arises within these networks, and how does this relate to the learned density? In the paper below, we show that **a fully unsupervised notion of semantic similarity arises from the task of denoising ...**
 
 <details markdown="1">
   <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
@@ -384,15 +384,6 @@ We also show the representation in the bottom block is most robust to noise leve
 <p align="center" markdown="1">
 <img src="https://zahra-kadkhodaie.github.io/images/emergent_clusters.png" alt="Project schematic" width="90%"><br>
       <span style="font-size: 0.80em; color: #555;">    
-  </span>
-</p>
-
-
-
-<p align="center" markdown="1">
-<img src="https://zahra-kadkhodaie.github.io/images/reps.003.png" alt="Project schematic" width="90%"><br>
-      <span style="font-size: 0.80em; color: #555;">
-    
   </span>
 </p>
 
