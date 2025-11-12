@@ -21,7 +21,7 @@ main:
   #- title: "Blog Posts"
   #  url: /year-archive/
 
-  - title: "Science of deep learning workshop"
+  - title: "sci4DL"
     url: /sci4DL/
 
   # - title: "CV"

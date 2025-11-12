@@ -6,7 +6,8 @@ author_profile: true   # optional
 ---
 
 ### organizing 
-- Sci4Dl workshop NeurIPS - link , video 
+- Sci4Dl workshop NeurIPS - link , video
+- https://scienceofdlworkshop.github.io/
 - Organzing bi-weekly meetinsg at CCN - link 
 - Organized grad siminar at CDS
 
