@@ -21,11 +21,11 @@ main:
   #- title: "Blog Posts"
   #  url: /year-archive/
 
-  - title: "Service"
-    url: /service/
+  - title: "Science of deep learning workshop"
+    url: /sci4DL/
 
   # - title: "CV"
   #   url: /cv-json/
 
-  - title: "Guide"
-    url: /markdown/
+  # - title: "Guide"
+  #   url: /markdown/

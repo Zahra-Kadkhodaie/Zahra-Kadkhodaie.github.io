@@ -425,21 +425,34 @@ ZK, Mallat, Simoncelli, Unconditional CNN denoiser contain sparse semantic repre
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
 
-Ultimately, we want to learn the density to use it! Inverse problems in signal processing (a particular approach: it is stochastic) 
+Ultimately, we want "good" density models of images in order to use it real-world problems. From a Bayesian perspective, many problems in image processing and computer vision rely on having access to a density. In the era of deep learning, we can learn very powerful priors from data, through denoising, which opens the door to solving inverse problems with unprecedented quality. 
 
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000"> Stochastic solutions to linear inverse problems using diffusion models </span>
 
+In the paper below, we introduced an algorithm to solve *any* linear inverse problem by sampling from a posterior. The posterior is built by combining the prior implicit in a denoiser and the likelihood function which returns partial meaurement of an image. Examples are low resolution image, missing pixels, blurred image, etc. 
+
+
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
+
+
+
+combine different measurement functions (i.e likelihood functions) with a learned prior embeded in a denoiser to solve *any* inverse problem... 
 **Reference:** <br>
 ZK & Simoncelli, Solving linear inverse problems using the prior implicit in a denoiser. arXiv, 2020.  [PDF](https://arxiv.org/pdf/2007.13640) | [Project page](https://github.com/LabForComputationalVision/universal_inverse_problem)<br>
 Later published as: ZK & Simoncelli, Stochastic Solutions for Linear Inverse Problems using the Prior Implicit in a Denoiser. NeurIPS, 2021. [PDF](https://proceedings.neurips.cc/paper/2021/hash/6e28943943dbed3c7f82fc05f269947a-Abstract.html)  <br>  
 
-
+</details>
 
 <!-- ------------------------------------------------- -->
 
 ## <span style="color:#008000"> Learning optimal linear measurements for a prior embeded in a denoiser </span>
+
+
+<details markdown="1">
+  <summary><strong> <span style="color:#A52A2A"> Click here to see a summary </span> </strong></summary>
 
 
 Zhang, ZK, Simoncelli, Brainard, Generalized Compressed Sensing for Image Reconstruction with Diffusion Probabilistic Models. TMLR, 2025 (J2C ICLR2026)
@@ -454,6 +467,8 @@ Zhang, ZK, Simoncelli, Brainard, Generalized Compressed Sensing for Image Recons
 
 
 <!-- ## <span style="color:#008000">  feature guided? </span> -->
+</details>
+
 
 ## <span style="color:#008000">  Guided sampling from a texture density model </span>
  
