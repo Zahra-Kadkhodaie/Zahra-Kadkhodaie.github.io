@@ -5,6 +5,9 @@ permalink: /talks/
 author_profile: true
 ---
 
+**Blind Denoising Diffusion Models (BDDM) and an Adaptive Sampling Algorithm**
+- 2nd Workshop on Deep Generative Model in Machine Learning: Theory, Principle and Efficacy, ICLR 2026, April 27, Rio de Janeiro, Brazil <a href="https://iclr.cc/virtual/2026/workshop/10000780#collapse-sl-10021460" target="_blank">(Video)</a>
+
 
 **Elucidating the Representation of Images Within an Unconditional Diffusion Model Denoiser**
 <!-- June 2025 - our lab meeting-->
