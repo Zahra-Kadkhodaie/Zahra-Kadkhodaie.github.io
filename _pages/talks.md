@@ -5,9 +5,16 @@ permalink: /talks/
 author_profile: true
 ---
 
-**Blind Denoising Diffusion Models (BDDM) and an Adaptive Sampling Algorithm**
-- 2nd Workshop on Deep Generative Model in Machine Learning: Theory, Principle and Efficacy, ICLR 2026, April 27, Rio de Janeiro, Brazil <a href="https://slideslive.com/39063855/blind-denoising-diffusion-models-bddm-and-adaptive-sampling-algorithm?ref=speaker-23489" target="_blank">(Video)</a>
+**Global Selection, Local Completion: a probabilistic anatomy of diffusion models**
+- October  2026 , Asilomar
+- Berkeley diffusion workshop August 2026 ()
+- How do diffusion models learn and encode global structures? CVPR tutorial June 2026 Analytic understanding of diffusion models
 
+**Blind Denoising Diffusion Models (BDDM) and an Adaptive Sampling Algorithm**
+- MSRNE in Boston in August 2026 
+- LUMINY July 2026 (BDDM)
+- 2nd Workshop on Deep Generative Model in Machine Learning <a href= "https://iclr.cc/virtual/2026/workshop/10000780#collapse-sl-10021460" target="_blank">(DeLTa)</a>: Theory, Principle and Efficacy, ICLR, Rio de Janeiro, Brazil <a href="https://slideslive.com/39063855/blind-denoising-diffusion-models-bddm-and-adaptive-sampling-algorithm?ref=speaker-23489" target="_blank">(Video)</a> -- April 2026
+-  Lausanne event on Machine : Learning & Neural Network Theory (LemanTh3), EPFL, Switzerland -- April 2026
 
 **Elucidating the Representation of Images Within an Unconditional Diffusion Model Denoiser**
 <!-- June 2025 - our lab meeting-->
@@ -19,10 +26,10 @@ author_profile: true
 - My defense public talk
 - NYU CDS graduate seminar-->
 
-**Generalization in Diffusion Models Arises from Geometry-Adaptive Harmonic Rrepresentations**
+**Generalization in Diffusion Models Arises from Geometry-Adaptive Harmonic Representations**
 - Data Driven Regularization Symposium at <a href="https://www.siam.org/conferences-events/past-event-archive/mds24/" target="_blank">SIAM Conference on Mathematics of Data Science (MDS24)</a>, Atlanta, Georgia -- Oct 24
 - CILVR Seminar, New York University -- Oct 2024 <a href="https://stream.nyu.edu/media/CILVR%20Seminar%3A%209th%20October%2C%202024/1_gfw3hwob" target="_blank">(Video)</a>
-- Journal Club on Theory of Machine Learning at Center for Theorectical Neuroscience, Columbia University, New York -- Oct 2024
+- Journal Club on Theory of Machine Learning at Center for Theoretical Neuroscience, Columbia University, New York -- Oct 2024
 - <a href="https://simons.berkeley.edu/workshops/emerging-generalization-settings" target="_blank">Emerging Generalization Settings</a> at Simons Institute for the Theory of Computing, Berkeley, CA -- Sept 2024 <a href="https://www.youtube.com/watch?v=BsX3FzIPVDQ" target="_blank">(Video)<a>
 - <a href="https://gram-workshop.github.io/" target="_blank">GRaM Workshop</a> at ICML -- Jul 2024 <a href="https://slideslive.com/39022248/generalization-in-diffusion-models-arises-from-geometryadaptive-harmonic-representations?ref=speaker-23489" target="_blank">(Video)</a>
 <!-- FI internal workshop on diffusion model and representation correspondence -->
