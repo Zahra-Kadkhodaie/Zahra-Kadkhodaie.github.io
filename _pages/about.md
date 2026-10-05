@@ -17,6 +17,9 @@ I enjoy studying these complementary perspectives and seeing how they inform one
 <!-- when engineeing creativity leads to improved performance, it often hints at something meaningful the model has captured about the "true" natural image density.  -->
 <!-- reveal new insights into the structure of natural images. -->
 
+
+Read more about my work on the [Research page](/research/).
+
  
 <!-- ------------------------------------------------- -->
 <!-- ------------------------------------------------- -->
