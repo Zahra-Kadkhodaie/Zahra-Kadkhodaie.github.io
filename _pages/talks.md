@@ -4,17 +4,16 @@ title: "Selected Talks"
 permalink: /talks/
 author_profile: true
 ---
-
 **Global Selection, Local Completion: a probabilistic anatomy of diffusion models**
-- October  2026 , Asilomar
-- Berkeley diffusion workshop August 2026 ()
-- How do diffusion models learn and encode global structures? CVPR tutorial June 2026 Analytic understanding of diffusion models
+- Learning Compact Representations: Theory & Applications at <a href= "https://asilomarssc.org/" target="_blank"> Asilomar Conference</a>, CA -- Oct 2026
+- Simons Institute workshop on <a href= "https://simons.berkeley.edu/workshops/diffusion-generative-modeling-progress-next-steps#simons-tabs" target="_blank">Diffusion Generative Modeling: Progress and Next Steps</a>, Berkeley, CA -- Aug 2026 <a href= "https://simons.berkeley.edu/talks/zahra-kadkhodaie-mit-2026-08-04" target="_blank">(Video)</a>
+- Tutorial on <a href= "https://analytic-diffusion.github.io/#schedule" target="_blank">Analytic Understanding of Diffusion Models</a> , CVPR, Denver CO -- Jun 2026 <a href= "https://cvpr.thecvf.com/virtual/2026/tutorial/36155" target="_blank">(Video)</a>
 
 **Blind Denoising Diffusion Models (BDDM) and an Adaptive Sampling Algorithm**
-- MSRNE in Boston in August 2026 
-- LUMINY July 2026 (BDDM)
-- 2nd Workshop on Deep Generative Model in Machine Learning <a href= "https://iclr.cc/virtual/2026/workshop/10000780#collapse-sl-10021460" target="_blank">(DeLTa)</a>: Theory, Principle and Efficacy, ICLR, Rio de Janeiro, Brazil <a href="https://slideslive.com/39063855/blind-denoising-diffusion-models-bddm-and-adaptive-sampling-algorithm?ref=speaker-23489" target="_blank">(Video)</a> -- April 2026
--  Lausanne event on Machine : Learning & Neural Network Theory (LemanTh3), EPFL, Switzerland -- April 2026
+- <a href= "https://www.microsoft.com/en-us/research/event/msrne-generative-modeling-sampling-workshop/agenda/" target="_blank">MSRNE Generative Modeling & Sampling</a>  Workshop, Cambridge, MA -- Aug 2026
+- Learning and Optimization in Luminy <a href= "https://conferences.cirm-math.fr/3630.html" target="_blank">LOL</a>, Jul 2026
+- 2nd Workshop on Deep Generative Model in Machine Learning <a href= "https://iclr.cc/virtual/2026/workshop/10000780#collapse-sl-10021460" target="_blank">(DeLTa)</a>, ICLR, Brazil -- Apr 2026 <a href="https://slideslive.com/39063855/blind-denoising-diffusion-models-bddm-and-adaptive-sampling-algorithm?ref=speaker-23489" target="_blank">(Video)</a> 
+-  Lausanne event on Machine : Learning & Neural Network Theory (LemanTh3), EPFL, Switzerland -- Apr 2026
 
 **Elucidating the Representation of Images Within an Unconditional Diffusion Model Denoiser**
 <!-- June 2025 - our lab meeting-->
@@ -27,7 +26,7 @@ author_profile: true
 - NYU CDS graduate seminar-->
 
 **Generalization in Diffusion Models Arises from Geometry-Adaptive Harmonic Representations**
-- Data Driven Regularization Symposium at <a href="https://www.siam.org/conferences-events/past-event-archive/mds24/" target="_blank">SIAM Conference on Mathematics of Data Science (MDS24)</a>, Atlanta, Georgia -- Oct 24
+- Data Driven Regularization Symposium at <a href="https://www.siam.org/conferences-events/past-event-archive/mds24/" target="_blank">SIAM Conference on Mathematics of Data Science (MDS24)</a>, Atlanta, Georgia -- Oct 2024
 - CILVR Seminar, New York University -- Oct 2024 <a href="https://stream.nyu.edu/media/CILVR%20Seminar%3A%209th%20October%2C%202024/1_gfw3hwob" target="_blank">(Video)</a>
 - Journal Club on Theory of Machine Learning at Center for Theoretical Neuroscience, Columbia University, New York -- Oct 2024
 - <a href="https://simons.berkeley.edu/workshops/emerging-generalization-settings" target="_blank">Emerging Generalization Settings</a> at Simons Institute for the Theory of Computing, Berkeley, CA -- Sept 2024 <a href="https://www.youtube.com/watch?v=BsX3FzIPVDQ" target="_blank">(Video)<a>
