@@ -1,9 +1,17 @@
 ---
-layout: archive
 title: "Research"
 permalink: /research/
 author_profile: true
 ---
+
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
+<!-- #  <span style="color:#A52A2A"> Learning Image Density Models from Data </span> -->
+# Learning Image Density Models from Data
+<!-- ------------------------------------------------- -->
+<!-- ------------------------------------------------- -->
+
+
 
 ## <span style="color:#008000"> Learning and sampling from a density implicit in a denoiser </span>
 <!-- ## Learning and sampling from the density implicit in a denoiser -->
@@ -448,3 +456,8 @@ Zhang, ZK, Simoncelli, Brainard, Generalized Compressed Sensing for Image Recons
 
 ## <span style="color:#008000">  Guided sampling from a texture density model </span>
  
+
+
+
+
+
