@@ -9,12 +9,13 @@ Complete list of papers at [Google Scholar](https://scholar.google.com/citations
 
 
 ### Selected Publications 
-- Z. Kadkhodaie\*, A. A. Pooladian\*, S. Chewi, & E. Simoncelli, **Blind denoising diffusion models and the blessings of dimensionality**. arXiv, Feb 2026 <br>
+- Z. Kadkhodaie\*, A. A. Pooladian\*, S. Chewi, & E. P. Simoncelli, **Blind denoising diffusion models and the blessings of dimensionality**. arXiv, Feb 2026 <br>
 [PDF](https://arxiv.org/abs/2602.09639v2)<br>
   <sub>\* denotes equal contribution</sub>
 
-- Z. Kadkhodaie, S. Mallat, E. P. Simoncelli, **Unconditional CNN denoiser contain sparse semantic representations of images**. arXiv, Jun 2025.<br>
- [PDF](https://arxiv.org/pdf/2506.01912)
+- Z. Kadkhodaie, S. Mallat, E. P. Simoncelli, **Unconditional CNN denoiser contain sparse semantic representations of images**. arXiv, Jun 2025 <br>
+Proc 60th Asilomar Conf on Signals, Systems and Computers, Oct 2026. To appear.<br>
+ [PDF](https://arxiv.org/pdf/2506.01912) 
 
 - F. Guth, Z Kadkhodaie, E. P. Simoncelli, **Learning normalized image densities via dual score matching**. NeurIPS, 2025 <br>
  [PDF](https://arxiv.org/pdf/2506.05310)
