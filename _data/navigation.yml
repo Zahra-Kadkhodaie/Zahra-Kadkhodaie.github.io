@@ -9,12 +9,15 @@
 
 main:
 
-  # - title: "Research"
-    # url: /research/
 
+  - title: "Research"
+    url: /research/
+    
   - title: "Publications"
     url: /publications/
+    
 
+    
   - title: "Talks"
     url: /talks/
 
@@ -29,5 +32,4 @@ main:
 
   # - title: "Guide"
   #   url: /markdown/
-  - title: "Research"
-    url: /research/
+
