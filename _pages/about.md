@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
  
-I’m a post-doctoral fellow at CSAIL MIT, working primarily with Antonio Torralba.
+I’m a post-doctoral fellow at CSAIL MIT.
 Prior to that I was a Flatiron Research Fellow at the Simons Foundation, working jointly at the Center for Computational Neuroscience and the Center for Computational Mathematics. I got my Ph.D. in Data Science in 2024 at the Center for Data Science at New York University, advised by [Eero Simoncelli](https://www.cns.nyu.edu/~eero/). Here is my [thesis](https://www.cns.nyu.edu/pub/lcv/kadkhodaie-phd.pdf). I studied Solid State Physics for my bachelor’s and Psychology for my master’s.
 
 I'm broadly interested in vision and more specifically in **probability densities of natural images**. 
