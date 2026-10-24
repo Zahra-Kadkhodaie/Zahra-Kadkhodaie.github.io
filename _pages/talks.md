@@ -36,8 +36,8 @@ author_profile: true
 - <a href="https://indico.ictp.it/event/10478" target="_blank">Youth in High Dimensions Workshop</a> at ICTP, Trieste Italy -- May 2024 <a href="https://www.youtube.com/watch?v=zMmFgy2mXz8&list=PLRwcSE2bmyByAJzy0cvK-Fgp_WZ4qm6U0&index=5" target="_blank">(Video)</a>
 - ICLR, Vienna, Austria -- May 2024 (Oral) <a href="https://slideslive.com/embed/presentation/39020004?js_embed_version=3&embed_init_token=eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTYxMzg1MDMsImV4cCI6MTcxNjI2ODEwMywidSI6eyJ1dWlkIjoiNWY1OTY5ZDEtYzM4Yy00OTM1LTgwZmUtMTU3ODg5MTJjNTI3IiwiaSI6bnVsbCwiZSI6bnVsbCwibSI6ZmFsc2V9LCJkIjoiaWNsci5jYyJ9.tWfuMfKLTH8AhUqoZimG0tMYm3_YCO4G1Up7fKvo_qA&embed_parent_url=https%3A%2F%2Ficlr.cc%2Fvirtual%2F2024%2Fsession%2F15088" target="_blank">(Video)</a>
 - Starkly Speaking Reading Group at MIT -- March 2024 <a href="https://www.youtube.com/watch?v=V_t6QppPbwQ" target="_blank">(Video)</a>
-<!-- FI workshop on diffusion- generalization -->
-
+- Measure Transport, Diffusion Processes and Sampling Workshop, Flatiron Institute, New York, NY -- Dec 023
+  
 **Efficient diffusion model via learning multi-scale local conditional probabilities models**
 - ICLR, Kigali, Rwanda -- May 2023 (Oral) <a href="https://iclr.cc/virtual/2023/poster/10971" target="_blank">(Video)</a>
 
